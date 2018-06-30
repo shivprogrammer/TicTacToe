@@ -9,12 +9,6 @@ package tictactoe;
  *
  * @author zen
  */
-public class TicTacToe {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-    }
+public enum Seed {
+    EMPTY, CROSS, NOUGHT
 }

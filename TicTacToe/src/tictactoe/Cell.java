@@ -9,12 +9,14 @@ package tictactoe;
  *
  * @author zen
  */
-public class TicTacToe {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
+public class Cell {
+    Seed content;
+    
+    int row, col;
+    
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
+        clear();
     }
 }
