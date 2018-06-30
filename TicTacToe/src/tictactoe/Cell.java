@@ -11,7 +11,6 @@ package tictactoe;
  */
 public class Cell {
     Seed content;
-    
     int row, col;
     
     public Cell(int row, int col) {
