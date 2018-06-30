@@ -9,13 +9,6 @@ package tictactoe;
  *
  * @author zen
  */
-public class TicTacToe {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("balls");
-    }
-    
+public enum GameState {
+    PLAYING, DRAW, CROSS_WON, NOUGHT_WON
 }
