@@ -9,7 +9,7 @@ public class Shivvy {
     public static final int ROWS = 3;
     public static final int COLS = 3;
     
-    public static int remaningMoves = 9;
+    public static int remainingMoves = 9;
     
     public static int[][] gameBoard = new int[ROWS][COLS];
     static GameState currentState;
@@ -24,7 +24,7 @@ public class Shivvy {
     public static void IntroMessage() {
         System.out.println("Welcome to TicTacToe");
         System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
-        System.out.println("You can enter an integer choice based on the game board map below");
+        System.out.println("You can enter an integer combo choice based on the game board map below");
     }
     
     public static void printBoardMap() {
@@ -60,6 +60,7 @@ public class Shivvy {
     }
     
     public static void playerMove() {
+        System.out.println("Please enter your move as two separate integers ranging from 1 to 3");
         boolean validMove = false;
         
         do {
@@ -73,6 +74,7 @@ public class Shivvy {
                     gameBoard[playerRowChoice][playerColChoice] = EX;
                     validMove = true;
                     remainingMoves--;
+                    tieGameCheck(remainingMoves);
                 }
             else {
                 System.out.println("Invalid move, please try again");
@@ -86,20 +88,25 @@ public class Shivvy {
         boolean validMove = false;
         
         do {
-            int compRowChoice = (int) Math.floor(Math.random() * 3);
-            int compColChoice = (int) Math.floor(Math.random() * 3);
+            int compRowChoice = (int) Math.floor(Math.random() * 2);
+            int compColChoice = (int) Math.floor(Math.random() * 2);
             
             if (gameBoard[compRowChoice][compColChoice] == EMPTY) {
-                    System.out.println("Computer has made the choice of: " + compRowChoice + compColChoice);
-                    gameBoard[playerRowChoice][playerColChoice] = OH;
+                    System.out.println("Computer has made the choice of: " + (compRowChoice + 1) + "," + (compColChoice + 1));
+                    gameBoard[compRowChoice][compColChoice] = OH;
                     validMove = true;
                     remainingMoves--;
+            }
+            else {
+                System.out.println("The computer fucked up");
             }
         } while (!validMove);
     }
     
-    public static void tieGame() {
-        
+    public static void tieGameCheck(int remainingMoves) {
+        if (remainingMoves == 0) {
+            currentState = GameState.TIE_GAME;
+        }
     }
     
     public static void main(String[] args) {
@@ -109,31 +116,21 @@ public class Shivvy {
         System.out.println("Ready to Go? Type anything to play");
         String initiateGame  = in.next();
         
+        // Game is ongoing
         if (!(initiateGame == "")) {
             System.out.println("IT IS GAME TIME BABY");
             playGame();
             
             while (currentState == GameState.PLAYING) {
-                
+                playerMove();
             }
         }
-        else
+        else {
             System.out.println("Okay, have a great day");
+        }
         
-        if (GameState.TIE_GAME)
+        // Tie game
+        if (currentState == GameState.TIE_GAME)
             System.out.println("There are no winners or losers");
-        
-        // Let the games begin
-//        if (currentState == GameState.PLAYING) {
-//            clearScreen();
-            
-//            int playerInput = in.nextInt();
-//            
-//            switch (playerInput) {
-//                case 0:
-//                    System.out.println("  X  ");
-//                    break;
-//            }
-//        }
     }
 }
