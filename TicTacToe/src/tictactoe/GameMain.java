@@ -70,5 +70,16 @@ public class GameMain {
         } while (!validInput);
     }
     
+    public void updateGame(Seed theSeed) {
+        if (board.hasWon(theSeed)) {
+            currentState = (theSeed == Seed.CROSS) ? GameState.CROSS_WON : GameState.NOUGHT_WON;
+        }
+        else if (board.isDraw()) {
+            currentState = GameState.DRAW;
+        }
+    }
     
+    public static void main(String[] args) {
+        new GameMain();
+    }
 }
