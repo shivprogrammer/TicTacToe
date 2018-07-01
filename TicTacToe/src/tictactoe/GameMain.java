@@ -18,5 +18,27 @@ public class GameMain {
     
     public GameMain() {
         board = new Board();
+        
+        initGame();
+        
+        do {
+            playerMove(currentPlayer);
+            board.paint();
+            updateGame(currentPlayer);
+            
+            if (currentState == GameState.CROSS_WON) {
+                System.out.println(" 'X' won!!");
+            }
+            else if (currentState == GameState.NOUGHT_WON) {
+                System.out.println(" 'O' won!!");
+            }
+            else if (currentState == GameState.DRAW) {
+                System.out.println("It's a Draw! Bye!");
+            }
+            
+            currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.Cross;
+        } while (currentState == GameState.PLAYING);
     }
+    
+    
 }
