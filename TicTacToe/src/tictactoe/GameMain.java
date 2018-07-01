@@ -46,5 +46,15 @@ public class GameMain {
         currentState = GameState.PLAYING;
     }
     
-    
+    public void playerMove(Seed theSeed) {
+        boolean validInput = false;
+        do {
+            if (theSeed == Seed.CROSS) {
+                System.out.print("Player 'X', enter your move");
+            }
+            else {
+                 System.out.print("Player 'X', enter your move");
+            }
+        }
+    }
 }
