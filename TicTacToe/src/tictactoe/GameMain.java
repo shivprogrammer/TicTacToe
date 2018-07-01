@@ -40,5 +40,11 @@ public class GameMain {
         } while (currentState == GameState.PLAYING);
     }
     
+    public void initGame() {
+        board.init();
+        currentPlayer = Seed.CROSS;
+        currentState = GameState.PLAYING;
+    }
+    
     
 }
