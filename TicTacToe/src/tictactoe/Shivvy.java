@@ -6,8 +6,12 @@ public class Shivvy {
     public static final int EMPTY = 0;
     public static final int EX = 1;
     public static final int OH = 2;
+    public static final int ROWS = 3;
+    public static final int COLS = 3;
     
-    static int[] gameBoard = new int[9];
+    public static int remaningMoves = 9;
+    
+    public static int[][] gameBoard = new int[ROWS][COLS];
     static GameState currentState;
     
     private static Scanner in = new Scanner(System.in);
@@ -24,11 +28,11 @@ public class Shivvy {
     }
     
     public static void printBoardMap() {
-        System.out.println("  1  |  2  |  3  ");
-        System.out.println("-----------");
-        System.out.println("  4  |  5  |  6  ");
-        System.out.println("-----------");
-        System.out.println("  7  |  8  |  9  ");
+        System.out.println("  1,1  |  2,1  |  3,1  ");
+        System.out.println("------------------");
+        System.out.println("  1,2  |  2,2  |  3,2  ");
+        System.out.println("------------------");
+        System.out.println("  1,3  |  2,3  |  3,3  ");
     }
     
 //    public static void printBlankBoard() {
@@ -42,25 +46,60 @@ public class Shivvy {
     public static void playGame() {
         clearScreen();
 //        printBlankBoard();
-        blankBoard();
+        createEmptyBoard();
         playerMove();
     }
     
-    public static void blankBoard() {
-        for (int cells = 0; cells < gameBoard.length; cells++) {
-            gameBoard[cells] = EMPTY;
+    public static void createEmptyBoard() {
+        for (int row = 0; row < ROWS; ++row) {
+            for (int col = 0; col < COLS; ++col) {
+                gameBoard[row][col] = EMPTY;
+            }
         }
         currentState = GameState.PLAYING;
     }
     
     public static void playerMove() {
-        int playerMove = in.nextInt() - 1;
+        boolean validMove = false;
         
-        if (playerMove <= 8 && playerMove >= 0 && gameBoard[playerMove] == EMPTY) {
-            System.out.println("Sucessful move");
-        }
-        else
-            System.out.println("Please try again");
+        do {
+            int playerRowChoice = in.nextInt() - 1;
+            int playerColChoice = in.nextInt() - 1;
+            
+            if ((playerRowChoice <= 2 && playerRowChoice >= 0)
+                 && (playerColChoice <=2 && playerColChoice >= 0)
+                 && gameBoard[playerRowChoice][playerColChoice] == EMPTY) {
+                    System.out.println("Successful move");
+                    gameBoard[playerRowChoice][playerColChoice] = EX;
+                    validMove = true;
+                    remainingMoves--;
+                }
+            else {
+                System.out.println("Invalid move, please try again");
+            }
+        } while (!validMove);
+        
+        computerMove();
+    }
+    
+    public static void computerMove() {
+        boolean validMove = false;
+        
+        do {
+            int compRowChoice = (int) Math.floor(Math.random() * 3);
+            int compColChoice = (int) Math.floor(Math.random() * 3);
+            
+            if (gameBoard[compRowChoice][compColChoice] == EMPTY) {
+                    System.out.println("Computer has made the choice of: " + compRowChoice + compColChoice);
+                    gameBoard[playerRowChoice][playerColChoice] = OH;
+                    validMove = true;
+                    remainingMoves--;
+            }
+        } while (!validMove);
+    }
+    
+    public static void tieGame() {
+        
     }
     
     public static void main(String[] args) {
@@ -73,9 +112,16 @@ public class Shivvy {
         if (!(initiateGame == "")) {
             System.out.println("IT IS GAME TIME BABY");
             playGame();
+            
+            while (currentState == GameState.PLAYING) {
+                
+            }
         }
         else
             System.out.println("Okay, have a great day");
+        
+        if (GameState.TIE_GAME)
+            System.out.println("There are no winners or losers");
         
         // Let the games begin
 //        if (currentState == GameState.PLAYING) {
