@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Shivvy {
     public static final int EMPTY = 0;
-    public static final int X = 1;
-    public static final int 0 = 2;
+    public static final int EX = 1;
+    public static final int OH = 2;
     
-    static int[] gameBoard;
+    static int[] gameBoard = new int[9];
     static GameState currentState;
     
     private static Scanner in = new Scanner(System.in);
@@ -31,18 +31,19 @@ public class Shivvy {
         System.out.println("  7  |  8  |  9  ");
     }
     
-    public static void printBlankBoard() {
-        System.out.println("     |     |     ");
-        System.out.println("----------");
-        System.out.println("     |     |     ");
-        System.out.println("----------");
-        System.out.println("     |     |     ");
-    }
+//    public static void printBlankBoard() {
+//        System.out.println("     |     |     ");
+//        System.out.println("----------");
+//        System.out.println("     |     |     ");
+//        System.out.println("----------");
+//        System.out.println("     |     |     ");
+//    }
     
     public static void playGame() {
         clearScreen();
-        printBlankBoard();
+//        printBlankBoard();
         blankBoard();
+        playerMove();
     }
     
     public static void blankBoard() {
@@ -52,8 +53,15 @@ public class Shivvy {
         currentState = GameState.PLAYING;
     }
     
-    public static void playerMove {
-   }
+    public static void playerMove() {
+        int playerMove = in.nextInt() - 1;
+        
+        if (playerMove <= 8 && playerMove >= 0 && gameBoard[playerMove] == EMPTY) {
+            System.out.println("Sucessful move");
+        }
+        else
+            System.out.println("Please try again");
+    }
     
     public static void main(String[] args) {
         clearScreen();
@@ -65,22 +73,21 @@ public class Shivvy {
         if (!(initiateGame == "")) {
             System.out.println("IT IS GAME TIME BABY");
             playGame();
-            gameBoard = new String[9];
         }
         else
             System.out.println("Okay, have a great day");
         
         // Let the games begin
-        if (currentState == GameState.PLAYING) {
-            clearScreen();
+//        if (currentState == GameState.PLAYING) {
+//            clearScreen();
             
-            int playerInput = in.nextInt();
-            
-            switch (playerInput) {
-                case 0:
-                    System.out.println("  X  ");
-                    break;
-            }
-        }
+//            int playerInput = in.nextInt();
+//            
+//            switch (playerInput) {
+//                case 0:
+//                    System.out.println("  X  ");
+//                    break;
+//            }
+//        }
     }
 }
