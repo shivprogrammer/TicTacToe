@@ -55,6 +55,20 @@ public class GameMain {
             else {
                  System.out.print("Player 'X', enter your move");
             }
-        }
+            
+            int row = in.nextInt() - 1;
+            int col = in.nextInt() - 1;
+            if (row >= 0 && row < Board.ROWS && col >= 0 && col < Board.COLS && board.cells[row][col].content == Seed.EMPTY) {
+                board.cells[row][col].content = theSeed;
+                board.currentRow = row;
+                board.currentCol = col;
+                validInput = true;
+            }
+            else {
+                System.out.println("This is an invalid move, please try again");
+            }
+        } while (!validInput);
     }
+    
+    
 }
