@@ -3,7 +3,11 @@ package tictactoe;
 import java.util.Scanner;
 
 public class Shivvy {
-    static String[] gameBoard;
+    public static final int EMPTY = 0;
+    public static final int X = 1;
+    public static final int 0 = 2;
+    
+    static int[] gameBoard;
     static GameState currentState;
     
     private static Scanner in = new Scanner(System.in);
@@ -27,7 +31,7 @@ public class Shivvy {
         System.out.println("  7  |  8  |  9  ");
     }
     
-        public static void printBlankBoard() {
+    public static void printBlankBoard() {
         System.out.println("     |     |     ");
         System.out.println("----------");
         System.out.println("     |     |     ");
@@ -38,19 +42,35 @@ public class Shivvy {
     public static void playGame() {
         clearScreen();
         printBlankBoard();
+        blankBoard();
+    }
+    
+    public static void blankBoard() {
+        for (int cells = 0; cells < gameBoard.length; cells++) {
+            gameBoard[cells] = EMPTY;
+        }
         currentState = GameState.PLAYING;
     }
+    
+    public static void playerMove {
+   }
     
     public static void main(String[] args) {
         clearScreen();
         IntroMessage();
         printBoardMap();
-        System.out.println("Ready to Play?");
+        System.out.println("Ready to Go? Type anything to play");
+        String initiateGame  = in.next();
         
-        gameBoard = new String[9];
+        if (!(initiateGame == "")) {
+            System.out.println("IT IS GAME TIME BABY");
+            playGame();
+            gameBoard = new String[9];
+        }
+        else
+            System.out.println("Okay, have a great day");
         
-        playGame();
-        
+        // Let the games begin
         if (currentState == GameState.PLAYING) {
             clearScreen();
             
@@ -58,16 +78,9 @@ public class Shivvy {
             
             switch (playerInput) {
                 case 0:
-                    System.out.println("did it work?");
+                    System.out.println("  X  ");
                     break;
             }
         }
-//        while (currentState == GameState.PLAYING) {
-//            int playerInput;
-//            
-//            try {
-//                playerInput = in.nextInt();
-//            }
-//        }
     }
 }
