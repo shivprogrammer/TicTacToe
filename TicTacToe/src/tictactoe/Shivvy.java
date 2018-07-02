@@ -1,6 +1,6 @@
-package tictactoe;
-
 // ** THIS IS THE ORIGINAL FILE THAT I HAD THEN TRANSLATED INTO THE OBJECT ORIENTED PROGRAM THAT RUNS THE GAME **
+
+//  package tictactoe;
 
 //import java.util.Scanner;
 
@@ -200,4 +200,4 @@ package tictactoe;
 //             break;
 //      }
 //   }
-}
+//}
