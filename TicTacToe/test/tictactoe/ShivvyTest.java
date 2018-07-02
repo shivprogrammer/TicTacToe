@@ -9,13 +9,49 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ShivvyTest {
+    public static final int EMPTY = 0;
+    public static final int EX = 1;
+    public static final int OH = 2;
+    public static int[][] drawGame = new int[3][3];
+    public static GameState currentState = GameState.PLAYING;
     
-    @Test
-    public void randomTest() {
-        int x = 1;
-        int y = 1;
-        assertEquals(x, y);
-    }
+//    @Test
+//    public void isBoardEmptyAtBeginning() {
+//        public static int[][] gameBoard = new int[3][3];
+//        
+//        Shivvy.createEmptyBoard();
+//        
+//        assertEquals(gameBoard[0][0], EMPTY);
+//        assertEquals(gameBoard[0][1], EMPTY);
+//        assertEquals(gameBoard[0][2], EMPTY);
+//        assertEquals(gameBoard[1][0], EMPTY);
+//        assertEquals(gameBoard[1][1], EMPTY);
+//        assertEquals(gameBoard[1][2], EMPTY);
+//        assertEquals(gameBoard[2][0], EMPTY);
+//        assertEquals(gameBoard[2][1], EMPTY);
+//        assertEquals(gameBoard[2][2], EMPTY);
+//    }
+        
+//    @Test
+//    public void gameResultsInDraw() {
+//        drawGame[0][0] = 1;
+//        drawGame[0][1] = 2;
+//        drawGame[0][2] = 1;
+//        drawGame[1][0] = 2;
+//        drawGame[1][1] = 1;
+//        drawGame[1][2] = 2;
+//        drawGame[2][0] = 1;
+//        drawGame[2][1] = 2;
+//        
+//        // Making the last move in a game to result in a tie
+//        assertEquals(checkGameStatus(EX, 3, 3), GameState.TIE_GAME); 
+//    }
+    
+//    public void legalPlayerMoves() {
+//        
+//    }
+
+// TODO: ArrayOutOfBoundException testing for numbers out of range on inputs
     
 //    public ShivvyTest() {
 //    }
