@@ -150,7 +150,6 @@ public class Shivvy {
     public static void main(String[] args) {
         IntroMessage();
         System.out.print("Ready to Go? Type any buttons to start ");
-        
         String initiateGame  = in.next();
         
         if (initiateGame != "") {
@@ -175,7 +174,7 @@ public class Shivvy {
          }
          System.out.println();
          if (row != TOTAL_ROWS - 1) {
-            System.out.println("-----------");
+            System.out.println("---------");
          }
       }
       System.out.println();
