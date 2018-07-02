@@ -3,6 +3,11 @@ package tictactoe;
 import java.util.Scanner;
 
 public class Shivvy {
+    public static final int YOU_LOST = -1;
+    public static final int PLAYING = 0;
+    public static final int TIE_GAME = 1;
+    public static final int YOU_WON = 3;
+    
     public static final int EMPTY = 0;
     public static final int EX = 1;
     public static final int OH = 2;
