@@ -35,18 +35,9 @@ public class Shivvy {
         System.out.println("------------------");
         System.out.println("  1,3  |  2,3  |  3,3  ");
     }
-    
-//    public static void printBlankBoard() {
-//        System.out.println("     |     |     ");
-//        System.out.println("----------");
-//        System.out.println("     |     |     ");
-//        System.out.println("----------");
-//        System.out.println("     |     |     ");
-//    }
-    
+        
     public static void playGame() {
         clearScreen();
-//        printBlankBoard();
         createEmptyBoard();
         playerMove();
     }
@@ -59,23 +50,7 @@ public class Shivvy {
         }
         currentState = GameState.PLAYING;
     }
-    
-    // TESTING FOR createEmptyBoard
-    public void isBoardEmptyAtBeginning() {
-        createEmptyBoard();
         
-        Test.assertEquals(gameBoard[0][0], EMPTY);
-        Test.assertEquals(gameBoard[0][1], EMPTY);
-        Test.assertEquals(gameBoard[0][2], EMPTY);
-        Test.assertEquals(gameBoard[1][0], EMPTY);
-        Test.assertEquals(gameBoard[1][1], EMPTY);
-        Test.assertEquals(gameBoard[1][2], EMPTY);
-        Test.assertEquals(gameBoard[2][0], EMPTY);
-        Test.assertEquals(gameBoard[2][1], EMPTY);
-        Test.assertEquals(gameBoard[2][2], EMPTY);
-    }
-    ///// END TESTING /////
-    
     public static void playerMove() {
         System.out.println("Please enter your move as two separate integers ranging from 1 to 3");
         boolean validMove = false;
@@ -101,14 +76,7 @@ public class Shivvy {
         
         computerMove();
     }
-    
-    // TESTING FOR createEmptyBoard
-    // Nevermind, you don't want to emulate the Scanner (but I don't know how the hell I am going to run the PlayerMove method without activating the damn scanner, but at least I can manually put the moves that a player could be expected to make -- this one may be an annoyance)
-    public void legalPlayerMoves() {
-        //
-    }
-    ///// END TESTING /////
-    
+        
     public static void computerMove() {
         boolean validMove = false;
         
@@ -155,11 +123,7 @@ public class Shivvy {
                 && gameBoard[2][0] == EX)
                 );
     }
-    
-    // didExWin TESTS
-    ///// END TESTING /////
-    
-    
+        
     public static void main(String[] args) {
         clearScreen();
         IntroMessage();
