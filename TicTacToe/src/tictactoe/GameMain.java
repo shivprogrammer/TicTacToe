@@ -2,7 +2,7 @@
 //
 //import java.util.Scanner;
 //
-//public class GameMain {
+public class GameMain {
 //   private Board board;
 //   private GameState currentState;
 //   private Seed currentPlayer;
@@ -70,4 +70,4 @@
 //   public static void main(String[] args) {
 //      new GameMain();
 //   }
-//}
+}
