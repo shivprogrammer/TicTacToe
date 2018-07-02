@@ -6,6 +6,7 @@ public class Shivvy {
     public static final int EMPTY = 0;
     public static final int EX = 1;
     public static final int OH = 2;
+    
     public static final int ROWS = 3;
     public static final int COLS = 3;
     public static final int MAXIMUM_MOVES = 9;
@@ -39,7 +40,10 @@ public class Shivvy {
     public static void playGame() {
         clearScreen();
         createEmptyBoard();
-        playerMove();
+        currentState = GameState.PLAYING;
+        
+        while (currentState == GameState.PLAYING)
+            playerMove();
     }
     
     public static void createEmptyBoard() {
@@ -66,18 +70,28 @@ public class Shivvy {
                     gameBoard[playerRowChoice][playerColChoice] = EX;
                     validMove = true;
                     moveCount++;
-                    tieGameCheck(moveCount);
                     
+                    if (moveCount >= 5) {
+                        if (didExWin(playerRowChoice, playerColChoice)) {
+                            currentState = GameState.YOU_WON;
+                        }
+                    }
+                    
+                    if (moveCount == 9) {
+                        currentState = GameState.TIE_GAME;
+                    }
                 }
-            else {
+            
+            else
                 System.out.println("Invalid move, please try again");
-            }
+            
         } while (!validMove);
         
         computerMove();
     }
         
     public static void computerMove() {
+        System.out.println("Computer, please make your move");
         boolean validMove = false;
         
         do {
@@ -97,13 +111,7 @@ public class Shivvy {
             }
         } while (!validMove);
     }
-    
-    public static void tieGameCheck(int moveCount) {
-        if (moveCount == MAXIMUM_MOVES) {
-            currentState = GameState.TIE_GAME;
-        }
-    }
-    
+        
     public static boolean didExWin(int playerRowChoice, int playerColChoice) {
         return (
                 (gameBoard[playerRowChoice][0] == EX
@@ -133,17 +141,25 @@ public class Shivvy {
         
         // Game is ongoing
         if (!(initiateGame == "")) {
-            System.out.println("IT IS GAME TIME 1BABY");
+            System.out.println("IT IS GAME TIME BABY");
             playGame();
             
             while (currentState == GameState.PLAYING) {
                 playerMove();
             }
             
-            if (currentState == GameState.TIE_GAME)
-                System.out.println("There are no winners or losers");
-        }
-        else
-            System.out.println("Okay, have a great day");
+            if (currentState != GameState.PLAYING) {
+                if (currentState == GameState.YOU_WON) {
+                    clearScreen();
+                    System.out.println("YOU HAVE WON SON!!");
+                }
+                else if (currentState == GameState.TIE_GAME) {
+                    clearScreen();
+                    System.out.println("This game has resulted in a draw");
+                }
+            }
+            
+//        else
+//            System.out.println("Okay, have a great day");
     }
 }
