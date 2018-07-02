@@ -23,6 +23,10 @@ public class TicTacToe {
                 System.out.println("COMPUTER WON! Well, looks like artificial intelligence is going to take over the world");
         }
     }
+    
+    public GameState getCurrentState() {
+        return currentState;
+    }
             
     public void initializeGame() {
         gameBoard.createEmptyBoard();
