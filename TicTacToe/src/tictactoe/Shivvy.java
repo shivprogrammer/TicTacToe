@@ -1,16 +1,18 @@
 package tictactoe;
 
-import java.util.Scanner;
+// ** THIS IS THE ORIGINAL FILE THAT I HAD THEN TRANSLATED INTO THE OBJECT ORIENTED PROGRAM THAT RUNS THE GAME **
 
-public class Shivvy {
+//import java.util.Scanner;
+
+//public class Shivvy {
 //    public static final int YOU_LOST = -1;
 //    public static final int PLAYING = 0;
 //    public static final int TIE_GAME = 1;
 //    public static final int YOU_WON = 3;
     
-    public static final int EMPTY = 0;
-    public static final int EX = 1;
-    public static final int OH = 2;
+//    public static final int EMPTY = 0;
+//    public static final int EX = 1;
+//    public static final int OH = 2;
     
 //    public static final int TOTAL_ROWS = 3;
 //    public static final int TOTAL_COLS = 3;
@@ -46,13 +48,13 @@ public class Shivvy {
 //        System.out.println("  3,1  |  3,2  |  3,3  ");
 //    }
         
-    public static void playGame() {
-        initializeGame();
-        
-        while (currentState == GameState.PLAYING) {
-            playerMove();
-        }
-    }
+//    public static void playGame() {
+//        initializeGame();
+//        
+//        while (currentState == GameState.PLAYING) {
+//            playerMove();
+//        }
+//    }
     
 //    public static void checkGameState(int whoseTurn, int rowChoice, int colChoice) {
 //        if (isThereWinner(EX, rowChoice, colChoice)) {
@@ -64,11 +66,11 @@ public class Shivvy {
 //        }
 //    }
     
-    public static void initializeGame() {
-        clearScreen();
+//    public static void initializeGame() {
+//        clearScreen();
 //        printBlankBoard();
-        currentState = GameState.PLAYING;
-    }
+//        currentState = GameState.PLAYING;
+//    }
     
 //    public static void printBlankBoard() {
 //         for (int row = 0; row < TOTAL_ROWS; ++row) {
@@ -152,22 +154,22 @@ public class Shivvy {
 //                );
 //    }
         
-    public static void main(String[] args) {
-        IntroMessage();
-        System.out.print("Ready to Go? Type any buttons to start ");
-        String initiateGame  = in.next();
-        
-        if (initiateGame != "") {
-            playGame();
-            
-            if (currentState == GameState.YOU_WON) {
-                System.out.println("You're a winner my friend");
-            } else if (currentState == GameState.TIE_GAME) {
-                System.out.println("This game has resulted in a draw");
-            } else if (currentState == GameState.YOU_LOST)
-                System.out.println("Well, looks like Artificial Intelligence is going to take over the world");
-        }
-    }
+//    public static void main(String[] args) {
+//        IntroMessage();
+//        System.out.print("Ready to Go? Type any buttons to start ");
+//        String initiateGame  = in.next();
+//        
+//        if (initiateGame != "") {
+//            playGame();
+//            
+//            if (currentState == GameState.YOU_WON) {
+//                System.out.println("You're a winner my friend");
+//            } else if (currentState == GameState.TIE_GAME) {
+//                System.out.println("This game has resulted in a draw");
+//            } else if (currentState == GameState.YOU_LOST)
+//                System.out.println("Well, looks like Artificial Intelligence is going to take over the world");
+//        }
+//    }
 
 //    public static void printBoard() {
 //      for (int row = 0; row < TOTAL_ROWS; ++row) {

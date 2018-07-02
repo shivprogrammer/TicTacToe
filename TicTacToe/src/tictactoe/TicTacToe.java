@@ -38,7 +38,7 @@ public class TicTacToe {
     
     public void playerMove() {
         System.out.println("");
-        System.out.print("Please enter your move in a row and column pair with each number ranging from 1-3 (example: '1 2')");
+        System.out.print("Please enter your move in a row and column pair with each number ranging from 1-3 (example: '1 2'): ");
         
         boolean validMove = false;
         int playerRowChoice = consoleInput.nextInt() - 1;
