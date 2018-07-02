@@ -1,7 +1,7 @@
 package tictactoe;
 
-import org.junit.Test;
-//import static org.junit.Assert;
+//import org.junit.Test;
+import org.junit.Assert;
 //import org.junit.runners.JUnit4;
 
 public class Testing {
@@ -27,8 +27,9 @@ public class Testing {
 //        
 //    }
     
-    @Test
+//    @Test
     public void gameResultsInDraw() {
+        Assert.assertEquals(1, 1);
 //        static GameState currentState = GameState.PLAYING;
 //        public static int[][] drawGame1 = new int[3][3];
 //        drawgame1[0][0] = EX;
