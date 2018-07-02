@@ -92,6 +92,7 @@ public class Shivvy {
                     validMove = true;
                     moveCount++;
                     tieGameCheck(moveCount);
+                    
                 }
             else {
                 System.out.println("Invalid move, please try again");
@@ -134,6 +135,30 @@ public class Shivvy {
             currentState = GameState.TIE_GAME;
         }
     }
+    
+    public static boolean didExWin(int playerRowChoice, int playerColChoice) {
+        return (
+                (gameBoard[playerRowChoice][0] == EX
+                && gameBoard[playerRowChoice][1] == EX
+                && gameBoard[playerRowChoice][2] == EX)
+             ||
+                (gameBoard[0][playerColChoice] == EX
+                && gameBoard[1][playerColChoice] == EX
+                && gameBoard[2][playerColChoice] == EX)
+             ||
+                (gameBoard[0][0] == EX
+                && gameBoard[1][1] == EX
+                && gameBoard[2][2] == EX)
+             ||
+                (gameBoard[0][2] == EX
+                && gameBoard[1][1] == EX
+                && gameBoard[2][0] == EX)
+                );
+    }
+    
+    // didExWin TESTS
+    ///// END TESTING /////
+    
     
     public static void main(String[] args) {
         clearScreen();
