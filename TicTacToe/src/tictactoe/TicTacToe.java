@@ -13,7 +13,7 @@ public class TicTacToe {
         String initiateGame  = consoleInput.next();
         
         if (initiateGame != "") {
-            gameBoard = new Board();
+            gameBoard = new Board(0);
             playGame();
             
             if (currentState == GameState.YOU_WON) {
@@ -23,22 +23,6 @@ public class TicTacToe {
             } else if (currentState == GameState.YOU_LOST)
                 System.out.println("Well, looks like Artificial Intelligence is going to take over the world");
         }
-//        playGame();
-        
-//        do {
-//            playerMove(currentPlayer);
-//            board.paint();
-//            updateGame(currentPlayer);
-//         
-//            if (currentState == GameState.CROSS_WON) {
-//                System.out.println("'X' won!!");
-//            } else if (currentState == GameState.NOUGHT_WON) {
-//                System.out.println("'O' won!!");
-//            } else if (currentState == GameState.DRAW) {
-//                System.out.println("It's Draw! Bye!");
-//            }
-//            
-//        } while (currentState == GameState.PLAYING);
     }
         
 //    public void IntroMessage() {
@@ -53,7 +37,7 @@ public class TicTacToe {
     
     public void initializeGame() {
 //        gameBoard.clearScreen();
-        gameBoard.printBlankBoard();
+        gameBoard.createBlankBoard();
         currentState = GameState.PLAYING;
     }
     
@@ -79,7 +63,7 @@ public class TicTacToe {
                     gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
                     gameBoard.rowChoice = playerRowChoice;
                     gameBoard.colChoice = playerColChoice;
-//                    gameBoard.moveCount++;
+                    gameBoard.moveCount++;
                     gameBoard.printBoard();
                     validMove = true;
                 }
@@ -96,7 +80,6 @@ public class TicTacToe {
         
     public void computerMove() {
         System.out.print("Computer, please make your move ");
-        
         boolean validMove = false;
         int compRowChoice = consoleInput.nextInt() - 1;
         int compColChoice = consoleInput.nextInt() - 1;
@@ -110,7 +93,7 @@ public class TicTacToe {
                     gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
                     gameBoard.rowChoice = compRowChoice;
                     gameBoard.colChoice = compColChoice;
-//                    moveCount++;
+                    gameBoard.moveCount++;
                     gameBoard.printBoard();
                     validMove = true;
             } else
@@ -126,10 +109,9 @@ public class TicTacToe {
             currentState = GameState.YOU_WON;
         } else if (gameBoard.isThereWinner(CellContent.OH)) {
             currentState = GameState.YOU_LOST;
+        } else if (gameBoard.moveCount == gameBoard.MAXIMUM_MOVES) {
+            currentState = GameState.TIE_GAME;
         }
-//        else if (moveCount == MAXIMUM_MOVES) {
-//            currentState = GameState.TIE_GAME;
-//        }
     }
     
     public static void main(String[] args) {
