@@ -1,5 +1,5 @@
-package tictactoe;
-
-public enum Seed {
-    EMPTY, CROSS, NOUGHT
-}
+//package tictactoe;
+//
+//public enum Seed {
+//    EMPTY, CROSS, NOUGHT
+//}
