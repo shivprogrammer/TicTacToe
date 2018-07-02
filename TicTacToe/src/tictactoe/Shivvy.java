@@ -77,13 +77,11 @@ public class Shivvy {
                     
                     printBoard();
                     
-                    if (moveCount >= 5) {
-                        if (didExWin(playerRowChoice, playerColChoice)) {
-                            currentState = GameState.YOU_WON;
-                        }
+                    if (didExWin(playerRowChoice, playerColChoice)) {
+                        currentState = GameState.YOU_WON;
                     }
                     
-                    if (moveCount == 9) {
+                    if (moveCount == MAXIMUM_MOVES) {
                         currentState = GameState.TIE_GAME;
                     }
                     
@@ -156,11 +154,13 @@ public class Shivvy {
             
             // Game Results
             if (currentState == GameState.YOU_WON) {
-                System.out.println("YOU HAVE WON SON!!");
+                System.out.println("You're a winner my friend");
             }
             else if (currentState == GameState.TIE_GAME) {
                 System.out.println("This game has resulted in a draw");
             }
+            else if (currentState == GameState.YOU_LOST)
+                System.out.println("Well, looks like Artificial Intelligence is going to take over the world");
             
 //        else
 //            System.out.println("Okay, have a great day");
@@ -169,14 +169,14 @@ public class Shivvy {
            public static void printBoard() {
       for (int row = 0; row < ROWS; ++row) {
          for (int col = 0; col < COLS; ++col) {
-            printCell(gameBoard[row][col]); // print each of the cells
+            printCell(gameBoard[row][col]);
             if (col != COLS - 1) {
-               System.out.print("|");   // print vertical partition
+               System.out.print("|");
             }
          }
          System.out.println();
          if (row != ROWS - 1) {
-            System.out.println("-----------"); // print horizontal partition
+            System.out.println("-----------");
          }
       }
       System.out.println();
@@ -185,9 +185,15 @@ public class Shivvy {
    /** Print a cell with the specified "content" */
    public static void printCell(int content) {
       switch (content) {
-         case EMPTY:  System.out.print("   "); break;
-         case EX: System.out.print(" O "); break;
-         case OH:  System.out.print(" X "); break;
+         case EMPTY:
+             System.out.print("   ");
+             break;
+         case OH:
+             System.out.print(" O ");
+             break;
+         case EX:
+             System.out.print(" X ");
+             break;
       }
    }
 }
