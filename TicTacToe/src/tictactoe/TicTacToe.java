@@ -8,12 +8,11 @@ public class TicTacToe {
     private static Scanner consoleInput = new Scanner(System.in);
     
     public TicTacToe() {
-//        IntroMessage();
-        System.out.print("Ready to Go? Type any buttons to start ");
+        gameBoard = new Board(0);
+        gameBoard.introMessage();
         String initiateGame  = consoleInput.next();
         
         if (initiateGame != "") {
-            gameBoard = new Board(0);
             playGame();
             
             if (currentState == GameState.YOU_WON) {
@@ -24,19 +23,8 @@ public class TicTacToe {
                 System.out.println("Well, looks like Artificial Intelligence is going to take over the world");
         }
     }
-        
-//    public void IntroMessage() {
-//        gameBoard.clearScreen();
-//        
-//        System.out.println("Welcome to TicTacToe");
-//        System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
-//        System.out.println("You can enter an integer combo choice based on the game board map below");
-//        
-//        gameBoard.printBoardMap();
-//    }
-    
+            
     public void initializeGame() {
-//        gameBoard.clearScreen();
         gameBoard.createBlankBoard();
         currentState = GameState.PLAYING;
     }
@@ -49,7 +37,8 @@ public class TicTacToe {
    }
     
     public void playerMove() {
-        System.out.print("Please enter your move as 2 separate integers ranging from 1 to 3, first for x coordinate and 2nd for y coordinate: ");
+        System.out.println("");
+        System.out.print("Please enter your move in a row and column pair with each number ranging from 1-3 (example: '1 2')");
         
         boolean validMove = false;
         int playerRowChoice = consoleInput.nextInt() - 1;
@@ -59,7 +48,7 @@ public class TicTacToe {
             if ((playerRowChoice <= Board.TOTAL_ROWS && playerRowChoice >= 0)
                  && (playerColChoice <=Board.TOTAL_COLS && playerColChoice >= 0)
                  && gameBoard.cells[playerRowChoice][playerColChoice].content == CellContent.EMPTY) {
-                    System.out.println("Successful move");
+                    System.out.println("You have chosen row: " + (playerRowChoice + 1) + ", and column: " + (playerColChoice + 1));
                     gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
                     gameBoard.rowChoice = playerRowChoice;
                     gameBoard.colChoice = playerColChoice;
@@ -79,7 +68,9 @@ public class TicTacToe {
     }
         
     public void computerMove() {
+        System.out.println("");
         System.out.print("Computer, please make your move ");
+        
         boolean validMove = false;
         int compRowChoice = consoleInput.nextInt() - 1;
         int compColChoice = consoleInput.nextInt() - 1;
@@ -89,14 +80,16 @@ public class TicTacToe {
 //            int compColChoice = (int) Math.floor(Math.random() * 2);
             
             if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
-                    System.out.println("Computer has made the choice of: " + (compRowChoice + 1) + "," + (compColChoice + 1));
+                    System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
                     gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
                     gameBoard.rowChoice = compRowChoice;
                     gameBoard.colChoice = compColChoice;
                     gameBoard.moveCount++;
                     gameBoard.printBoard();
                     validMove = true;
-            } else
+            }
+            
+            else
                 System.out.print("Invalid, try again");
             
         } while (!validMove);

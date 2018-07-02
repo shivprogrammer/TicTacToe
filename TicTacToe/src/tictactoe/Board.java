@@ -22,10 +22,19 @@ public class Board {
        }
    }
    
-//    public void clearScreen() {  
-//        System.out.print("\033[H\033[2J");  
-//        System.out.flush();  
-//    }
+   public void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
+   
+   public void introMessage() {
+        clearScreen();
+        System.out.println("Welcome to TicTacToe");
+        System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
+        System.out.println("You can enter an integer combo choice based on the game board map below");
+        printBoardMap();
+        System.out.print("Ready to Go? Type any buttons to start ");
+    }
    
    public void printBoardMap() {
         System.out.println("  1,1  |  1,2  |  1,3  ");
@@ -42,18 +51,19 @@ public class Board {
            }
        }
    }
-// 
-//   public boolean isDraw() {
-//      for (int row = 0; row < ROWS; ++row) {
-//         for (int col = 0; col < COLS; ++col) {
-//            if (cells[row][col].content == Seed.EMPTY) {
-//               return false;
-//            }
-//         }
-//      }
-//      return true;
-//   }
-// 
+   
+   public void printBoard() {
+      for (int row = 0; row < TOTAL_ROWS; ++row) {
+         for (int col = 0; col < TOTAL_COLS; ++col) {
+            cells[row][col].printCell();
+            if (col < TOTAL_COLS - 1) System.out.print("|");
+         }
+         System.out.println();
+         if (row < TOTAL_ROWS - 1) {
+            System.out.println("---------");
+         }
+      }
+   }
    
    public boolean isThereWinner(CellContent player) {
        return ((cells[rowChoice][0].content == player
@@ -72,16 +82,4 @@ public class Board {
                 && cells[1][1].content == player
                 && cells[2][0].content == player));
     }
-   public void printBoard() {
-      for (int row = 0; row < TOTAL_ROWS; ++row) {
-         for (int col = 0; col < TOTAL_COLS; ++col) {
-            cells[row][col].printCell();
-            if (col < TOTAL_COLS - 1) System.out.print("|");
-         }
-         System.out.println();
-         if (row < TOTAL_ROWS - 1) {
-            System.out.println("---------");
-         }
-      }
-   }
 }
