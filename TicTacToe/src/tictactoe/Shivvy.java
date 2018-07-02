@@ -1,6 +1,10 @@
-// ** THIS IS THE ORIGINAL FILE THAT I HAD THEN TRANSLATED INTO THE OBJECT ORIENTED PROGRAM THAT RUNS THE GAME **
+/*
 
-//  package tictactoe;
+** This is the original game I had created, which has been translated to fulfilling Object Oriented Design principles**
+
+*/
+
+//package tictactoe;
 
 //import java.util.Scanner;
 

@@ -33,6 +33,7 @@ public class Board {
         System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
         System.out.println("You can enter an integer combo choice based on the game board map below");
         printBoardMap();
+        System.out.println("");
         System.out.print("Ready to Go? Type any buttons to start ");
     }
    
@@ -44,7 +45,7 @@ public class Board {
         System.out.println("  3,1  |  3,2  |  3,3  ");
     }
    
-   public void createBlankBoard() {
+   public void createEmptyBoard() {
        for (int row = 0; row < TOTAL_ROWS; ++row) {
            for (int col = 0; col < TOTAL_COLS; ++col) {
                cells[row][col].clearCell();
@@ -52,7 +53,7 @@ public class Board {
        }
    }
    
-   public void printBoard() {
+   public void printBoardInConsole() {
       for (int row = 0; row < TOTAL_ROWS; ++row) {
          for (int col = 0; col < TOTAL_COLS; ++col) {
             cells[row][col].printCell();
