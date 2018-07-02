@@ -7,10 +7,10 @@ public class Board {
     public static final int MAXIMUM_MOVES = 9;
     public static int moveCount = 0;
     
-    public static int rowChoice;
-    public static int colChoice;
+    int rowChoice;
+    int colChoice;
     
-    public static Cell[][] cells;
+    Cell[][] cells;
     
     public void clearScreen() {  
         System.out.print("\033[H\033[2J");  
@@ -71,7 +71,7 @@ public class Board {
 //   }
 //
    
-   public static boolean isThereWinner(CellContent player) {
+   public boolean isThereWinner(CellContent player) {
        return ((cells[rowChoice][0].content == player
                 && cells[rowChoice][1].content == player
                 && cells[rowChoice][2].content == player)

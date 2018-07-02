@@ -3,8 +3,8 @@ package tictactoe;
 import java.util.Scanner;
 
 public class TicTacToe {
-    private static Board gameBoard;
-    private static GameState currentState;
+    private Board gameBoard;
+    private GameState currentState;
     private static Scanner consoleInput = new Scanner(System.in);
     
     public GameMain() {
@@ -64,7 +64,7 @@ public class TicTacToe {
             playerMove();
    }
     
-    public static void playerMove() {
+    public void playerMove() {
         System.out.print("Please enter your move as 2 separate integers ranging from 1 to 3, first for x coordinate and 2nd for y coordinate: ");
         
         boolean validMove = false;
@@ -77,7 +77,9 @@ public class TicTacToe {
                  && gameBoard.cells[playerRowChoice][playerColChoice].content == CellContent.EMPTY) {
                     System.out.println("Successful move");
                     gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
-                    gameBoard.moveCount++;
+                    gameBoard.rowChoice = playerRowChoice;
+                    gameBoard.colChoice = playerColChoice;
+//                    gameBoard.moveCount++;
                     gameBoard.printBoard();
                     validMove = true;
                 }
@@ -87,7 +89,7 @@ public class TicTacToe {
             
         } while (!validMove);
         
-        checkGameState(CellContent.EX, playerRowChoice, playerColChoice);
+        gameBoard.isThereWinner(CellContent.EX);
         if (currentState == GameState.PLAYING)
             computerMove();
     }
