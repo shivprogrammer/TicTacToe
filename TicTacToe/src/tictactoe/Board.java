@@ -1,20 +1,25 @@
-//package tictactoe;
-//
-//public class Board {
-//   public static final int ROWS = 3;
-//   public static final int COLS = 3;
-// 
-//   Cell[][] cells;
-//   int currentRow, currentCol;
-// 
-//   public Board() {
-//      cells = new Cell[ROWS][COLS];
-//      for (int row = 0; row < ROWS; ++row) {
-//         for (int col = 0; col < COLS; ++col) {
-//            cells[row][col] = new Cell(row, col);
-//         }
-//      }
-//   }
+package tictactoe;
+
+public class Board {
+    public static final int TOTAL_ROWS = 3;
+    public static final int TOTAL_COLS = 3;
+    
+    public static final int MAXIMUM_MOVES = 9;
+    public static int moveCount = 0;
+    
+    Cell[][] cells;
+    int rowChoice;
+    int colChoice;
+   
+   
+   public Board() {
+      cells = new Cell[TOTAL_ROWS][TOTAL_COLS];
+      for (int row = 0; row < TOTAL_ROWS; ++row) {
+         for (int col = 0; col < TOTAL_COLS; ++col) {
+            cells[row][col] = new Cell(row, col);
+         }
+      }
+   }
 // 
 //   public void init() {
 //      for (int row = 0; row < ROWS; ++row) {
@@ -52,16 +57,16 @@
 //                   && cells[2][0].content == theSeed);
 //   }
 // 
-//   public void paint() {
-//      for (int row = 0; row < ROWS; ++row) {
-//         for (int col = 0; col < COLS; ++col) {
-//            cells[row][col].paint();
-//            if (col < COLS - 1) System.out.print("|");
-//         }
-//         System.out.println();
-//         if (row < ROWS - 1) {
-//            System.out.println("-----------");
-//         }
-//      }
-//   }
-//}
+   public void paint() {
+      for (int row = 0; row < TOTAL_ROWS; ++row) {
+         for (int col = 0; col < TOTAL_COLS; ++col) {
+            cells[row][col].paint();
+            if (col < COLS - 1) System.out.print("|");
+         }
+         System.out.println();
+         if (row < ROWS - 1) {
+            System.out.println("-----------");
+         }
+      }
+   }
+}

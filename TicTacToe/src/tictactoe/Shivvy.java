@@ -12,11 +12,11 @@ public class Shivvy {
     public static final int EX = 1;
     public static final int OH = 2;
     
-    public static final int TOTAL_ROWS = 3;
-    public static final int TOTAL_COLS = 3;
-    public static final int MAXIMUM_MOVES = 9;
+//    public static final int TOTAL_ROWS = 3;
+//    public static final int TOTAL_COLS = 3;
     
-    public static int moveCount = 0;
+//    public static final int MAXIMUM_MOVES = 9;
+//    public static int moveCount = 0;
     
     public static int[][] gameBoard = new int[TOTAL_ROWS][TOTAL_COLS];
     static GameState currentState;
