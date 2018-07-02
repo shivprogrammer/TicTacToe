@@ -61,7 +61,12 @@ public class Shivvy {
     }
     
     // TESTING FOR createEmptyBoard
-    Test.assertEquals(gameBoard[0][0] EMPTY)
+    // Test Name: isBoardEmptyAtBeginning() {
+        createEmptyBoard();
+        Test.assertEquals(gameBoard[0][0], EMPTY)
+    }
+    
+
 
     ///// END TESTING /////
     
