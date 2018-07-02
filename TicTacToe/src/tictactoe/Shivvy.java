@@ -34,11 +34,11 @@ public class Shivvy {
     }
     
     public static void printBoardMap() {
-        System.out.println("  1,1  |  2,1  |  3,1  ");
+        System.out.println("  1,1  |  1,2  |  1,3  ");
         System.out.println("------------------");
-        System.out.println("  1,2  |  2,2  |  3,2  ");
+        System.out.println("  2,1  |  2,2  |  2,3  ");
         System.out.println("------------------");
-        System.out.println("  1,3  |  2,3  |  3,3  ");
+        System.out.println("  3,1  |  3,2  |  3,3  ");
     }
         
     public static void playGame() {
@@ -73,8 +73,9 @@ public class Shivvy {
                  && gameBoard[playerRowChoice][playerColChoice] == EMPTY) {
                     System.out.println("Successful move");
                     gameBoard[playerRowChoice][playerColChoice] = EX;
-                    validMove = true;
                     moveCount++;
+                    
+                    printBoard();
                     
                     if (moveCount >= 5) {
                         if (didExWin(playerRowChoice, playerColChoice)) {
@@ -85,6 +86,8 @@ public class Shivvy {
                     if (moveCount == 9) {
                         currentState = GameState.TIE_GAME;
                     }
+                    
+                    validMove = true;
                 }
             
             else
@@ -108,12 +111,15 @@ public class Shivvy {
             if (gameBoard[compRowChoice][compColChoice] == EMPTY) {
                     System.out.println("Computer has made the choice of: " + (compRowChoice + 1) + "," + (compColChoice + 1));
                     gameBoard[compRowChoice][compColChoice] = OH;
-                    validMove = true;
                     moveCount++;
+                    printBoard();
+                    validMove = true;
             }
             else {
                 System.out.println("The computer fucked up");
             }
+            
+            
         } while (!validMove);
     }
         
@@ -159,4 +165,29 @@ public class Shivvy {
 //        else
 //            System.out.println("Okay, have a great day");
     }
+        
+           public static void printBoard() {
+      for (int row = 0; row < ROWS; ++row) {
+         for (int col = 0; col < COLS; ++col) {
+            printCell(gameBoard[row][col]); // print each of the cells
+            if (col != COLS - 1) {
+               System.out.print("|");   // print vertical partition
+            }
+         }
+         System.out.println();
+         if (row != ROWS - 1) {
+            System.out.println("-----------"); // print horizontal partition
+         }
+      }
+      System.out.println();
+   }
+ 
+   /** Print a cell with the specified "content" */
+   public static void printCell(int content) {
+      switch (content) {
+         case EMPTY:  System.out.print("   "); break;
+         case EX: System.out.print(" O "); break;
+         case OH:  System.out.print(" X "); break;
+      }
+   }
 }
