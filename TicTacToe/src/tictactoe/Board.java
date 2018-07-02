@@ -7,10 +7,10 @@ public class Board {
     public static final int MAXIMUM_MOVES = 9;
     public static int moveCount = 0;
     
-    Cell[][] cells;
     int rowChoice;
     int colChoice;
-   
+    
+    Cell[][] cells;
    
    public Board() {
       cells = new Cell[TOTAL_ROWS][TOTAL_COLS];
@@ -20,14 +20,14 @@ public class Board {
          }
       }
    }
-// 
-//   public void init() {
-//      for (int row = 0; row < ROWS; ++row) {
-//         for (int col = 0; col < COLS; ++col) {
-//            cells[row][col].clear();
-//         }
-//      }
-//   }
+   
+   public void printBlankBoard() {
+      for (int row = 0; row < TOTAL_ROWS; ++row) {
+         for (int col = 0; col < TOTAL_COLS; ++col) {
+            cells[row][col].clearCell();
+         }
+      }
+   }
 // 
 //   public boolean isDraw() {
 //      for (int row = 0; row < ROWS; ++row) {
@@ -57,15 +57,15 @@ public class Board {
 //                   && cells[2][0].content == theSeed);
 //   }
 // 
-   public void paint() {
+   public void printBoard() {
       for (int row = 0; row < TOTAL_ROWS; ++row) {
          for (int col = 0; col < TOTAL_COLS; ++col) {
-            cells[row][col].paint();
-            if (col < COLS - 1) System.out.print("|");
+            cells[row][col].printCell();
+            if (col < TOTAL_COLS - 1) System.out.print("|");
          }
          System.out.println();
-         if (row < ROWS - 1) {
-            System.out.println("-----------");
+         if (row < TOTAL_ROWS - 1) {
+            System.out.println("---------");
          }
       }
    }

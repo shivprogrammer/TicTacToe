@@ -66,17 +66,17 @@ public class Shivvy {
     
     public static void initializeGame() {
         clearScreen();
-        printBlankBoard();
+//        printBlankBoard();
         currentState = GameState.PLAYING;
     }
     
-    public static void printBlankBoard() {
-         for (int row = 0; row < TOTAL_ROWS; ++row) {
-            for (int col = 0; col < TOTAL_COLS; ++col) {
-                gameBoard[row][col] = EMPTY;
-            }
-        }
-    }
+//    public static void printBlankBoard() {
+//         for (int row = 0; row < TOTAL_ROWS; ++row) {
+//            for (int col = 0; col < TOTAL_COLS; ++col) {
+//                gameBoard[row][col] = EMPTY;
+//            }
+//        }
+//    }
         
     public static void playerMove() {
         System.out.print("Please enter your move as 2 separate integers ranging from 1 to 3, first for x coordinate and 2nd for y coordinate: ");
@@ -169,21 +169,21 @@ public class Shivvy {
         }
     }
 
-    public static void printBoard() {
-      for (int row = 0; row < TOTAL_ROWS; ++row) {
-         for (int col = 0; col < TOTAL_COLS; ++col) {
-            printCell(gameBoard[row][col]);
-            if (col != TOTAL_COLS - 1) {
-               System.out.print("|");
-            }
-         }
-         System.out.println();
-         if (row != TOTAL_ROWS - 1) {
-            System.out.println("---------");
-         }
-      }
-      System.out.println();
-   }
+//    public static void printBoard() {
+//      for (int row = 0; row < TOTAL_ROWS; ++row) {
+//         for (int col = 0; col < TOTAL_COLS; ++col) {
+//            printCell(gameBoard[row][col]);
+//            if (col != TOTAL_COLS - 1) {
+//               System.out.print("|");
+//            }
+//         }
+//         System.out.println();
+//         if (row != TOTAL_ROWS - 1) {
+//            System.out.println("---------");
+//         }
+//      }
+//      System.out.println();
+//   }
  
 //   public static void printCell(int content) {
 //      switch (content) {

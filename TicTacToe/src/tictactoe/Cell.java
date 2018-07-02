@@ -1,17 +1,17 @@
 package tictactoe;
 
 public class Cell {
+   int row;
+   int col;
    CellContent content;
-   
-   int row, col;
  
    public Cell(int row, int col) {
       this.row = row;
       this.col = col;
-      clear();
+      clearCell();
    }
  
-   public void clear() {
+   public void clearCell() {
       content = CellContent.EMPTY;
    }
    
