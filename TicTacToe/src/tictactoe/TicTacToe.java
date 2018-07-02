@@ -89,7 +89,7 @@ public class TicTacToe {
             
         } while (!validMove);
         
-        gameBoard.isThereWinner(CellContent.EX);
+        checkGameState(CellContent.EX);
         if (currentState == GameState.PLAYING)
             computerMove();
     }
@@ -118,7 +118,18 @@ public class TicTacToe {
             
         } while (!validMove);
         
-        gameBoard.isThereWinner(CellContent.OH);
+        checkGameState(CellContent.OH);
+    }
+    
+    public void checkGameState(CellContent player) {
+        if (gameBoard.isThereWinner(CellContent.EX)) {
+            currentState = GameState.YOU_WON;
+        } else if (gameBoard.isThereWinner(CellContent.OH)) {
+            currentState = GameState.YOU_LOST;
+        }
+//        else if (moveCount == MAXIMUM_MOVES) {
+//            currentState = GameState.TIE_GAME;
+//        }
     }
     
     public static void main(String[] args) {

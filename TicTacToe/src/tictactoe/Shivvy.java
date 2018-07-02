@@ -54,15 +54,15 @@ public class Shivvy {
         }
     }
     
-    public static void checkGameState(int whoseTurn, int rowChoice, int colChoice) {
-        if (isThereWinner(EX, rowChoice, colChoice)) {
-            currentState = GameState.YOU_WON;
-        } else if (isThereWinner(OH, rowChoice, colChoice)) {
-            currentState = GameState.YOU_LOST;
-        } else if (moveCount == MAXIMUM_MOVES) {
-            currentState = GameState.TIE_GAME;
-        }
-    }
+//    public static void checkGameState(int whoseTurn, int rowChoice, int colChoice) {
+//        if (isThereWinner(EX, rowChoice, colChoice)) {
+//            currentState = GameState.YOU_WON;
+//        } else if (isThereWinner(OH, rowChoice, colChoice)) {
+//            currentState = GameState.YOU_LOST;
+//        } else if (moveCount == MAXIMUM_MOVES) {
+//            currentState = GameState.TIE_GAME;
+//        }
+//    }
     
     public static void initializeGame() {
         clearScreen();
