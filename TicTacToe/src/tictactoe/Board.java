@@ -7,10 +7,15 @@ public class Board {
     public static final int MAXIMUM_MOVES = 9;
     public static int moveCount = 0;
     
-    int rowChoice;
-    int colChoice;
+    public static int rowChoice;
+    public static int colChoice;
     
-    Cell[][] cells;
+    public static Cell[][] cells;
+    
+    public void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
     
     public void printBoardMap() {
         System.out.println("  1,1  |  1,2  |  1,3  ");
@@ -66,22 +71,22 @@ public class Board {
 //   }
 //
    
-   public static boolean isThereWinner(int whoseTurn, int playerRowChoice, int playerColChoice) {
-       return ((gameBoard[playerRowChoice][0] == whoseTurn
-                && gameBoard[playerRowChoice][1] == whoseTurn
-                && gameBoard[playerRowChoice][2] == whoseTurn)
+   public static boolean isThereWinner(CellContent player) {
+       return ((cells[rowChoice][0].content == player
+                && cells[rowChoice][1].content == player
+                && cells[rowChoice][2].content == player)
              ||
-                (gameBoard[0][playerColChoice] == whoseTurn
-                && gameBoard[1][playerColChoice] == whoseTurn
-                && gameBoard[2][playerColChoice] == whoseTurn)
+                (cells[0][colChoice].content == player
+                && cells[1][colChoice].content == player
+                && cells[2][colChoice].content == player)
              ||
-                (gameBoard[0][0] == whoseTurn
-                && gameBoard[1][1] == whoseTurn
-                && gameBoard[2][2] == whoseTurn)
+                (cells[0][0].content == player
+                && cells[1][1].content == player
+                && cells[2][2].content == player)
              ||
-                (gameBoard[0][2] == whoseTurn
-                && gameBoard[1][1] == whoseTurn
-                && gameBoard[2][0] == whoseTurn));
+                (cells[0][2].content == player
+                && cells[1][1].content == player
+                && cells[2][0].content == player));
     }
    public void printBoard() {
       for (int row = 0; row < TOTAL_ROWS; ++row) {

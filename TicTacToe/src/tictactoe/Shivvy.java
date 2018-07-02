@@ -23,20 +23,20 @@ public class Shivvy {
     
 //    private static Scanner in = new Scanner(System.in);
     
-    public static void clearScreen() {  
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();  
-    }  
+//    public static void clearScreen() {  
+//        System.out.print("\033[H\033[2J");  
+//        System.out.flush();  
+//    }  
     
-    public static void IntroMessage() {
-        clearScreen();
-        
-        System.out.println("Welcome to TicTacToe");
-        System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
-        System.out.println("You can enter an integer combo choice based on the game board map below");
-        
-        printBoardMap();
-    }
+//    public static void IntroMessage() {
+//        clearScreen();
+//        
+//        System.out.println("Welcome to TicTacToe");
+//        System.out.println("This is going to be a battle of Man vs. Machine. Human, you can go first as 'X'");
+//        System.out.println("You can enter an integer combo choice based on the game board map below");
+//        
+//        printBoardMap();
+//    }
     
 //    public static void printBoardMap() {
 //        System.out.println("  1,1  |  1,2  |  1,3  ");
