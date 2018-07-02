@@ -46,13 +46,14 @@ public class Shivvy {
         
         while (currentState == GameState.PLAYING) {
             playerMove();
-            computerMove();
         }
     }
     
     public static void checkGameState(int whoseTurn, int rowChoice, int colChoice) {
         if (isThereWinner(EX, rowChoice, colChoice)) {
             currentState = GameState.YOU_WON;
+        } else if (isThereWinner(OH, rowChoice, colChoice)) {
+            currentState = GameState.YOU_LOST;
         } else if (moveCount == MAXIMUM_MOVES) {
             currentState = GameState.TIE_GAME;
         }
@@ -96,6 +97,9 @@ public class Shivvy {
         } while (!validMove);
         
         checkGameState(EX, playerRowChoice, playerColChoice);
+        
+        if (currentState == GameState.PLAYING)
+            computerMove();
     }
         
     public static void computerMove() {
@@ -149,11 +153,9 @@ public class Shivvy {
         
         String initiateGame  = in.next();
         
-        // Game is ongoing
-        if (!(initiateGame == "")) {
+        if (initiateGame != "") {
             playGame();
             
-            // Game Results
             if (currentState == GameState.YOU_WON) {
                 System.out.println("You're a winner my friend");
             } else if (currentState == GameState.TIE_GAME) {
