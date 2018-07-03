@@ -35,7 +35,8 @@ public class TicTacToe {
             playerMove();
     }
         
-// **TODO** There's an iIputMismatchException to watch out for, maybe an add on would be: if consoleInput is an instanceOf int, then move on to the code below, OR wrap the code in a try catch block
+// **TODO** There's an inputMismatchException to watch out for, maybe an add on would be:
+// -> if consoleInput is an instanceOf int, then move on to the code below
     public void playerMove() { 
         System.out.println("");
         
@@ -81,22 +82,12 @@ public class TicTacToe {
     }
     
     public void computerMove() {
-        // TODO: Make computer moves actually random
-         int tempRow = (int) Math.floor(Math.random() * 2);
-         int tempCol = (int) Math.floor(Math.random() * 2);
-         
-         while (gameBoard.cells[tempRow][tempCol].content != CellContent.EMPTY) {
-             tempRow = (int) Math.floor(Math.random() * 2);
-             tempCol = (int) Math.floor(Math.random() * 2);
-         }
-//             if (gameBoard.cells[tempRow][tempCol].content != CellContent.EMPTY)
-//         }
-//         
-         int compRowChoice = tempRow;
-         int compColChoice = tempRow;
+        // TODO: Make computer moves random
+        // int compRowChoice = (int) Math.floor(Math.random() * 2);
+        // Int compColChoice = (int) Math.floor(Math.random() * 2);
         
-//        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
-//            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
+        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
+            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
                 if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
                     System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
@@ -110,8 +101,10 @@ public class TicTacToe {
                     if (currentState == GameState.PLAYING)
                         playerMove();
                 }
+            }
+        }
     }
-            
+    
     public void checkGameState(CellContent player) {
         if (gameBoard.isThereWinner(CellContent.EX)) {
             currentState = GameState.YOU_WON;
