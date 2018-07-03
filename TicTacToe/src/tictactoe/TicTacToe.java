@@ -33,50 +33,83 @@ public class TicTacToe {
         initializeGame();
         while (currentState == GameState.PLAYING)
             playerMove();
-   }
-    
-    public void playerMove() {
+    }
+        
+    public void playerMove() { 
         System.out.println("");
-        System.out.print("Please enter your move in a row and column pair with each number ranging from 1 to 3 (example: '1 2'): ");
+//        boolean validMove = false;
         
-        boolean validMove = false;
+        // Make sure row is in acceptable range
+        System.out.print("Please enter the row number of your move: ");
+        int playerRowChoice = consoleInput.nextInt() - 1;
+        while (playerRowChoice > Board.TOTAL_ROWS || playerRowChoice < 0) {
+            System.out.print("Invalid row choice, please choose ONLY a valid row integer between 1 and 3: ");
+            playerRowChoice = consoleInput.nextInt() - 1;
+        }
         
+        // Make sure column is in acceptable range
+        System.out.print("Please enter the column number of your move: ");
+        int playerColChoice = consoleInput.nextInt() - 1;        
+        while (playerColChoice >Board.TOTAL_COLS || playerColChoice < 0) {
+            System.out.print("Invalid column choice, please choose ONLY a valid column integer between 1 and 3: ");
+            playerColChoice = consoleInput.nextInt() - 1;
+        }
+        
+        // Make sure the cell is empty
+        if (gameBoard.cells[playerRowChoice][playerColChoice].content != CellContent.EMPTY) {
+            System.out.println("This cell is taken, try another combination");
+            System.out.println("");
+            System.out.print("Please enter the row number of your move: ");
+            playerRowChoice = consoleInput.nextInt() - 1;
+            System.out.print("Please enter the column number of your move: ");
+            playerColChoice = consoleInput.nextInt() - 1;
+        }
+        
+        System.out.println("");
+        System.out.println("You have chosen row: " + (playerRowChoice + 1) + ", and column: " + (playerColChoice + 1));
+        gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
+        gameBoard.rowChoice = playerRowChoice;
+        gameBoard.colChoice = playerColChoice;
+        gameBoard.moveCount++;
+        gameBoard.printBoardInConsole();
+        
+//        validMove = true;
         // **TODO: if consoleInput is an instanceOf int, then move on to the code below**
         
-        int playerRowChoice = consoleInput.nextInt() - 1;
-        int playerColChoice = consoleInput.nextInt() - 1;
+        // **There's an inputMismatchException to watch out for as well
         
-        // The following while loop eliminates the possibility of having ArrayOutOfBoundsException
-        while (playerRowChoice > 2 || playerRowChoice < 0 || playerColChoice > 2 || playerColChoice < 0) {
-            if (playerRowChoice > 2 || playerRowChoice < 0) {
-                System.out.print("Invalid row choice, please choose ONLY a valid row integer between 1 and 3: ");
-                playerRowChoice = consoleInput.nextInt() - 1;
-            }
-            else if (playerColChoice >2 || playerColChoice < 0) {
-                System.out.print("Invalid column choice, please choose ONLY a valid column integer between 1 and 3: ");
-                playerColChoice = consoleInput.nextInt() - 1;
-            }
-        }
+        
+//        while (playerRowChoice > Board.TOTAL_ROWS || playerRowChoice < 0 || playerColChoice > 2 || playerColChoice < 0) {
+//            if (playerRowChoice > Board.TOTAL_COLS || playerRowChoice < 0) {
+//                System.out.print("Invalid row choice, please choose ONLY a valid row integer between 1 and 3: ");
+//                playerRowChoice = consoleInput.nextInt() - 1;
+//            }
+//            else if (playerColChoice >2 || playerColChoice < 0) {
+//                System.out.print("Invalid column choice, please choose ONLY a valid column integer between 1 and 3: ");
+//                playerColChoice = consoleInput.nextInt() - 1;
+//            }
+//        }
 
-        do {    
-            if ((playerRowChoice <= Board.TOTAL_ROWS && playerRowChoice >= 0)
-                 && (playerColChoice <=Board.TOTAL_COLS && playerColChoice >= 0)
-                 && gameBoard.cells[playerRowChoice][playerColChoice].content == CellContent.EMPTY) {
-                
-                    System.out.println("");
-                    System.out.println("You have chosen row: " + (playerRowChoice + 1) + ", and column: " + (playerColChoice + 1));
-                    gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
-                    gameBoard.rowChoice = playerRowChoice;
-                    gameBoard.colChoice = playerColChoice;
-                    gameBoard.moveCount++;
-                    gameBoard.printBoardInConsole();
-                    validMove = true;
-                }
-            
-            else
-                System.out.print("This cell is already taken");
-            
-        } while (!validMove);
+//        do {    
+//            if (
+//                 (playerRowChoice <= Board.TOTAL_ROWS && playerRowChoice >= 0)
+//                 && (playerColChoice <=Board.TOTAL_COLS && playerColChoice >= 0)
+//                 && gameBoard.cells[playerRowChoice][playerColChoice].content == CellContent.EMPTY) {
+//                
+//                    System.out.println("");
+//                    System.out.println("You have chosen row: " + (playerRowChoice + 1) + ", and column: " + (playerColChoice + 1));
+//                    gameBoard.cells[playerRowChoice][playerColChoice].content = CellContent.EX;
+//                    gameBoard.rowChoice = playerRowChoice;
+//                    gameBoard.colChoice = playerColChoice;
+//                    gameBoard.moveCount++;
+//                    gameBoard.printBoardInConsole();
+//                    validMove = true;
+//                }
+//            
+//            else
+//                System.out.print("Invalid move, please try again");
+//            
+//        } while (!validMove);
         
         checkGameState(CellContent.EX);
         if (currentState == GameState.PLAYING)
@@ -96,6 +129,7 @@ public class TicTacToe {
 //            int compColChoice = (int) Math.floor(Math.random() * 2);
             
             if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
+                    System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
                     gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
                     gameBoard.rowChoice = compRowChoice;
