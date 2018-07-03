@@ -34,9 +34,11 @@ public class TicTacToe {
         while (currentState == GameState.PLAYING)
             playerMove();
     }
-        
-// **TODO** There's an inputMismatchException to watch out for, maybe an add on would be:
-// -> if consoleInput is an instanceOf int, then move on to the code below
+   
+    /*
+    **TODO** There's an inputMismatchException to watch out for, maybe an add on would be:
+    if consoleInput is an instanceOf int, then move on to the code below, OR adding in a try-catch block
+    */
     public void playerMove() { 
         System.out.println("");
         
@@ -81,14 +83,32 @@ public class TicTacToe {
             computerMove();
     }
     
+    /*
+    TODO: Currently this is a 2 player game -- the randomization process for the computer was either too predictable or slow
+    and wasn't functioning as effectively as I would have liked, so I reverted back to this version to showcase the full playability of the game.
+    */
     public void computerMove() {
-        // TODO: Make computer moves random
-        // int compRowChoice = (int) Math.floor(Math.random() * 2);
-        // Int compColChoice = (int) Math.floor(Math.random() * 2);
+        System.out.println("");        
+        boolean validMove = false;
         
-        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
-            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
-                if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
+        // Ensure that chosen row integer is within valid range
+        System.out.print("Computer, please enter the row number of your move: ");
+        int compRowChoice = consoleInput.nextInt() - 1;
+        while (compRowChoice > Board.TOTAL_ROWS || compRowChoice < 0) {
+            System.out.print("Invalid row choice, please choose ONLY a valid row integer between 1 and 3: ");
+            compRowChoice = consoleInput.nextInt() - 1;
+        }
+        
+        // Ensure that chosen column integer is within valid range
+        System.out.print("Computer, please enter the column number of your move: ");
+        int compColChoice = consoleInput.nextInt() - 1;        
+        while (compColChoice >Board.TOTAL_COLS || compColChoice < 0) {
+            System.out.print("Invalid column choice, please choose ONLY a valid column integer between 1 and 3: ");
+            compColChoice = consoleInput.nextInt() - 1;
+        }
+        
+        do {
+            if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
                     System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
                     gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
@@ -96,13 +116,15 @@ public class TicTacToe {
                     gameBoard.colChoice = compColChoice;
                     gameBoard.moveCount++;
                     gameBoard.printBoardInConsole();
-                    
-                    checkGameState(CellContent.OH);
-                    if (currentState == GameState.PLAYING)
-                        playerMove();
-                }
+                    validMove = true;
             }
-        }
+            
+            else
+                System.out.print("Invalid, try again");
+            
+        } while (!validMove);
+        
+        checkGameState(CellContent.OH);
     }
     
     public void checkGameState(CellContent player) {
