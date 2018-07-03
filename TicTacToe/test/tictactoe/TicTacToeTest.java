@@ -34,10 +34,7 @@ public class TicTacToeTest {
     }
     
     public boolean isValidMove(int rowChoice, int colChoice) {
-        return (
-                (rowChoice < 3 && rowChoice >= 0)
-                && (colChoice < 3 && colChoice >= 0)
-                );
+        return ((rowChoice < Board.TOTAL_ROWS && rowChoice >= 0) && (colChoice < Board.TOTAL_COLS && colChoice >= 0));
     }
     
     @Test
@@ -50,21 +47,22 @@ public class TicTacToeTest {
         assertEquals(isValidMove(1, 100), false);
     }
     
-//    @Test
-//    public void playerWon() {
-//        TicTacToe instance = new TicTacToe();
-//        Board gameBoard = new Board(0);
-//        gameBoard.createEmptyBoard();
-//        gameBoard.cells[0][0].content = CellContent.EX;
-//        gameBoard.cells[0][1].content = CellContent.EX;
-//        gameBoard.cells[0][2].content = CellContent.EX;
-//        
-//        assertEquals(currentState, GameState.YOU_WON);
-//    }
+    
+    
+    @Test
+    public void playerWon() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.EX;
+        gameBoard.cells[0][1].content = CellContent.EX;
+        gameBoard.cells[0][2].content = CellContent.EX;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+    }
+    
     
 //    @Test
 //    public void computerWon() {
-//        
 //    }
     
 //    @Test
@@ -158,10 +156,11 @@ public class TicTacToeTest {
      List out a game board that would result in player winning
      List out a game board that would result in computer winning
      */
+    
 //    @Test
 //    public void testCheckGameState() {
 //        System.out.println("checkGameState");
-//        CellContent player = null;
+//        CellContent player = CellContent.EX;
 //        TicTacToe instance = new TicTacToe();
 //        instance.checkGameState(player);
 //        // TODO review the generated test code and remove the default call to fail.
