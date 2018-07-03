@@ -153,16 +153,22 @@ public class TicTacToeTest {
     /*
     THERE WAS A TIE GAME
     */
-    
-   // TIE GAME 
-//    @Test
-//    public void gameResultedInDraw() {
-//        Board gameBoard = new Board(9);
-//        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
-//    }
-//    @Test
-//    public void gameResultedInDraw() {
-//        Board gameBoard = new Board(9);
-//        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
-//    }
+    @Test
+    public void gameResultedInDraw() {
+        Board gameBoard = new Board(9);
+        
+        
+        gameBoard.cells[0][0].content = CellContent.EMPTY;
+        gameBoard.cells[0][1].content = CellContent.EMPTY;
+        gameBoard.cells[0][2].content = CellContent.EMPTY;
+        gameBoard.cells[1][0].content = CellContent.EMPTY;
+        gameBoard.cells[1][1].content = CellContent.EMPTY;
+        gameBoard.cells[1][2].content = CellContent.EMPTY;
+        gameBoard.cells[2][0].content = CellContent.EMPTY;
+        gameBoard.cells[2][1].content = CellContent.EMPTY;
+        gameBoard.cells[2][2].content = CellContent.EMPTY;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), false);
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), false);
+    }
 }
