@@ -77,6 +77,51 @@ public class TicTacToeTest {
         
         assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
     }
+       
+    // Computer Has Won Tests
+        @Test
+    public void computerWonHorizontal() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.OH;
+        gameBoard.cells[0][1].content = CellContent.OH;
+        gameBoard.cells[0][2].content = CellContent.OH;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
+    }
+    @Test
+    public void computerWonVertical() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.OH;
+        gameBoard.cells[1][0].content = CellContent.OH;
+        gameBoard.cells[2][0].content = CellContent.OH;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
+    }
+    @Test
+    public void computerWonDiagonal() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.OH;
+        gameBoard.cells[1][1].content = CellContent.OH;
+        gameBoard.cells[2][2].content = CellContent.OH;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
+    }
+    @Test
+    public void computerWonBackwardsDiagonal() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[2][0].content = CellContent.OH;
+        gameBoard.cells[1][1].content = CellContent.OH;
+        gameBoard.cells[0][2].content = CellContent.OH;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
+    }
+    
+    
+    // Game Is Still In Session
     
     
 //    @Test
