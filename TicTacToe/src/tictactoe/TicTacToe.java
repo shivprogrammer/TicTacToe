@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
     private Board gameBoard;
-    private GameState currentState;
+    public GameState currentState; // Good practice is to have this be private, but left it to public for testing purposes
     private static Scanner consoleInput = new Scanner(System.in);
     
     public TicTacToe() {
@@ -24,9 +24,9 @@ public class TicTacToe {
         }
     }
     
-    public GameState getCurrentState() {
-        return currentState;
-    }
+//    public GameState getCurrentState() {
+//        return currentState;
+//    }
             
     public void initializeGame() {
         gameBoard.createEmptyBoard();
