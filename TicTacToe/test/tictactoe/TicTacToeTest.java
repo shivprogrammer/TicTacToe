@@ -120,9 +120,26 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
     }
     
-    
     // Game Is Still In Session
+    @Test
+    public void stillPlayingGame() {
+        Board gameBoard = new Board(7);
+   
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), false);
+        assertEquals(gameBoard.isThereWinner(CellContent.OH), false);
+    }
     
+   // TIE GAME 
+//    @Test
+//    public void gameResultedInDraw() {
+//        Board gameBoard = new Board(9);
+//        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+//    }
+//    @Test
+//    public void gameResultedInDraw() {
+//        Board gameBoard = new Board(9);
+//        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+//    }
     
 //    @Test
 //    public void computerWon() {
