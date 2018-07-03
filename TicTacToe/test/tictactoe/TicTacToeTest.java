@@ -45,12 +45,6 @@ public class TicTacToeTest {
         assertEquals(isValidMove(1, 100), false);
     }
     
-     /*
-    Test of computerMove method, of class TicTacToe.
-    Test for computer making a valid move
-    Test for computer making an invalid move
-    */
-    
     /*
     VARIOUS SCENARIOS WHERE PLAYER HAS WON
     */

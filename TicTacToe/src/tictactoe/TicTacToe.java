@@ -83,17 +83,20 @@ public class TicTacToe {
     
     // TODO: MAKE RANDOM
     public void computerMove() {
-        System.out.println("");
-        System.out.print("Computer, please make your move: ");
+        // TODO: Make computer moves random
+        // int compRowChoice = (int) Math.floor(Math.random() * 2);
+        // Int compColChoice = (int) Math.floor(Math.random() * 2);
+            
+//        System.out.println("");
+//        System.out.print("Computer, please make your move: ");
+//        
+//        boolean validMove = false;
+//        int compRowChoice = consoleInput.nextInt() - 1;
+//        int compColChoice = consoleInput.nextInt() - 1;
         
-        boolean validMove = false;
-        int compRowChoice = consoleInput.nextInt() - 1;
-        int compColChoice = consoleInput.nextInt() - 1;
-        
-        do {
-            // int compRowChoice = (int) Math.floor(Math.random() * 2);
-            // Int compColChoice = (int) Math.floor(Math.random() * 2);
-            if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
+        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
+            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
+                if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
                     System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
                     gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
@@ -101,16 +104,34 @@ public class TicTacToe {
                     gameBoard.colChoice = compColChoice;
                     gameBoard.moveCount++;
                     gameBoard.printBoardInConsole();
-                    validMove = true;
+                    
+                    checkGameState(CellContent.OH);
+                    if (currentState == GameState.PLAYING)
+                        playerMove();
+                }
             }
-            
-            else
-                System.out.print("Invalid, try again");
-            
-        } while (!validMove);
-        
-        checkGameState(CellContent.OH);
+        }
     }
+        
+//        do {
+
+//            if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
+//                    System.out.println("");
+//                    System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
+//                    gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
+//                    gameBoard.rowChoice = compRowChoice;
+//                    gameBoard.colChoice = compColChoice;
+//                    gameBoard.moveCount++;
+//                    gameBoard.printBoardInConsole();
+//                    validMove = true;
+//            }
+            
+//            else
+//                System.out.print("Invalid, try again");
+            
+//        } while (!validMove);
+        
+//        checkGameState(CellContent.OH);
     
     public void checkGameState(CellContent player) {
         if (gameBoard.isThereWinner(CellContent.EX)) {
