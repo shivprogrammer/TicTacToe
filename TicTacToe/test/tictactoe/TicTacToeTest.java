@@ -36,14 +36,14 @@ public class TicTacToeTest {
 //        System.out.println("please work");
         
         assertEquals(gameBoard.cells[0][0].content, CellContent.EMPTY);
-//        assertEquals(gameBoard.cells[0][1].content, 0);
-//        assertEquals(gameBoard.cells[0][2].content, 0);
-//        assertEquals(gameBoard.cells[1][0].content, 0);
-//        assertEquals(gameBoard.cells[1][1].content, 0);
-//        assertEquals(gameBoard.cells[1][2].content, 0);
-//        assertEquals(gameBoard.cells[2][0].content, 0);
-//        assertEquals(gameBoard.cells[2][1].content, 0);
-//        assertEquals(gameBoard.cells[2][2].content, 0);
+        assertEquals(gameBoard.cells[0][1].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[0][2].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[1][0].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[1][1].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[1][2].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[2][0].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[2][1].content, CellContent.EMPTY);
+        assertEquals(gameBoard.cells[2][2].content, CellContent.EMPTY);
     }
     
 //    @Test
