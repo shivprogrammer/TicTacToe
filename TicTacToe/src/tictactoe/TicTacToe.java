@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
     private Board gameBoard;
-    public GameState currentState; // Good practice is to have this be private, but left it to public for testing purposes
+    private GameState currentState;
     private static Scanner consoleInput = new Scanner(System.in);
     
     public TicTacToe() {
@@ -23,11 +23,7 @@ public class TicTacToe {
                 System.out.println("COMPUTER WON! Well, looks like artificial intelligence is going to take over the world");
         }
     }
-    
-//    public GameState getCurrentState() {
-//        return currentState;
-//    }
-            
+                
     public void initializeGame() {
         gameBoard.createEmptyBoard();
         currentState = GameState.PLAYING;
@@ -44,9 +40,22 @@ public class TicTacToe {
         System.out.print("Please enter your move in a row and column pair with each number ranging from 1-3 (example: '1 2'): ");
         
         boolean validMove = false;
+        
         int playerRowChoice = consoleInput.nextInt() - 1;
         int playerColChoice = consoleInput.nextInt() - 1;
         
+        // The following while loop eliminates the possibility of having ArrayOutOfBoundsException
+        while (playerRowChoice > 2 || playerRowChoice < 0 || playerColChoice > 2 || playerColChoice < 0) {
+            if (playerRowChoice > 2 || playerRowChoice < 0) {
+                System.out.print("Invalid row choice, please choose ONLY a valid row integer: ");
+                playerRowChoice = consoleInput.nextInt() - 1;
+            }
+            else if (playerColChoice >2 || playerColChoice < 0) {
+                System.out.print("Invalid column choice, please choose ONLY a valid column integer: ");
+                playerColChoice = consoleInput.nextInt() - 1;
+            }
+        }
+
         do {    
             if ((playerRowChoice <= Board.TOTAL_ROWS && playerRowChoice >= 0)
                  && (playerColChoice <=Board.TOTAL_COLS && playerColChoice >= 0)
@@ -62,7 +71,7 @@ public class TicTacToe {
                 }
             
             else
-                System.out.print("Invalid move, please try again");
+                System.out.print("This cell is already taken");
             
         } while (!validMove);
         

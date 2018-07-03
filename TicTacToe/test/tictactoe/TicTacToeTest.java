@@ -12,28 +12,19 @@ import static org.junit.Assert.*;
  * @author zen
  */
 public class TicTacToeTest {
-    public static final int EMPTY = 0;
-    public static final int EX = 1;
-    public static final int OH = 2;
-    
-    public static final int YOU_LOST = -1;
-    public static final int PLAYING = 0;
-    public static final int TIE_GAME = 1;
-    public static final int YOU_WON = 3;
-    
-//    gameBoard.createEmptyBoard();
-    
-    public Board tieGame;
-    public Board playerWon;
-    public Board computerWon;
-    
-    public static GameState currentState = GameState.PLAYING;
+//    public static final int YOU_LOST = -1;
+//    public static final int PLAYING = 0;
+//    public static final int TIE_GAME = 1;
+//    public static final int YOU_WON = 3;
+        
+//    public Board tieGame;
+//    public Board playerWon;
+//    public Board computerWon;
     
     @Test
     public void isBoardEmptyAtBeginning() {        
         Board gameBoard = new Board(0);
         gameBoard.createEmptyBoard();
-//        System.out.println("please work");
         
         assertEquals(gameBoard.cells[0][0].content, CellContent.EMPTY);
         assertEquals(gameBoard.cells[0][1].content, CellContent.EMPTY);
@@ -45,6 +36,37 @@ public class TicTacToeTest {
         assertEquals(gameBoard.cells[2][1].content, CellContent.EMPTY);
         assertEquals(gameBoard.cells[2][2].content, CellContent.EMPTY);
     }
+    
+    @Test
+    public void validPlayerMove() {
+        
+    }
+    
+//    @Test
+//    public void playerWon() {
+//        TicTacToe instance = new TicTacToe();
+//        Board gameBoard = new Board(0);
+//        gameBoard.createEmptyBoard();
+//        gameBoard.cells[0][0].content = CellContent.EX;
+//        gameBoard.cells[0][1].content = CellContent.EX;
+//        gameBoard.cells[0][2].content = CellContent.EX;
+//        
+//        assertEquals(currentState, GameState.YOU_WON);
+//    }
+    
+//    @Test
+//    public void computerWon() {
+//        
+//    }
+    
+//    @Test
+//    public void gameResultedInTie() {
+//        final int TIE_GAME = 1;
+//        
+//        Board gameBoard = new Board(9);
+//        
+//        assertEquals(gameBoard.checkGameState(CellContent.EX), 1);
+//    }
     
 //    @Test
 //    public void testPlayGame() {
