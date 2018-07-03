@@ -21,12 +21,21 @@ public class TicTacToeTest {
         assertEquals(gameBoard.cells[2][2].content, CellContent.EMPTY);
     }
     
+    /*
+    Test of playerMove method, of class TicTacToe.
+    Test for valid move:
+    Was playing entering in an empty cell? [HANDLED IN METHOD ITSELF]
+    Was the row number entered an integer? [TODO: Add try catch block in the playerMove method]
+    Was the col number entered an integer? TODO: Add try catch block in the playerMove method]
+    Was the row number between 1 and 3? [HANDLED IN METHOD ITSELF]
+    Was the col number between 1 and 3? [HANDLED IN METHOD ITSELF]
+    */
+    
     // This method is not used in game, but the logic is so it's added here for testing purposes
     public boolean isValidMove(int rowChoice, int colChoice) {
         return ((rowChoice < Board.TOTAL_ROWS && rowChoice >= 0) && (colChoice < Board.TOTAL_COLS && colChoice >= 0));
     }
-    
-    // Player Input Tests
+    // Player Move Tests
     @Test
     public void validPlayerMove() {
         assertEquals(isValidMove(0, 2), true);
@@ -36,7 +45,15 @@ public class TicTacToeTest {
         assertEquals(isValidMove(1, 100), false);
     }
     
-    // Player Has Won Tests
+     /*
+    Test of computerMove method, of class TicTacToe.
+    Test for computer making a valid move
+    Test for computer making an invalid move
+    */
+    
+    /*
+    VARIOUS SCENARIOS WHERE PLAYER HAS WON
+    */
     @Test
     public void playerWonHorizontal() {
         Board gameBoard = new Board(0);
@@ -78,7 +95,9 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
     }
        
-    // Computer Has Won Tests
+    /*
+    VARIOUS SCENARIOS WHERE COMPUTER HAS WON
+    */
         @Test
     public void computerWonHorizontal() {
         Board gameBoard = new Board(0);
@@ -120,7 +139,9 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
     }
     
-    // Game Is Still In Session
+    /*
+    GAME IS ONGOING
+    */
     @Test
     public void stillPlayingGame() {
         Board gameBoard = new Board(7);
@@ -128,6 +149,10 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.EX), false);
         assertEquals(gameBoard.isThereWinner(CellContent.OH), false);
     }
+    
+    /*
+    THERE WAS A TIE GAME
+    */
     
    // TIE GAME 
 //    @Test
@@ -140,87 +165,4 @@ public class TicTacToeTest {
 //        Board gameBoard = new Board(9);
 //        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
 //    }
-    
-//    @Test
-//    public void computerWon() {
-//    }
-    
-//    @Test
-//    public void gameResultedInTie() {
-//        final int TIE_GAME = 1;
-//        
-//        Board gameBoard = new Board(9);
-//        
-//        assertEquals(gameBoard.checkGameState(CellContent.EX), 1);
-//    }
-    
-//    @Test
-//    public void testPlayGame() {
-//        System.out.println("playGame");
-//        TicTacToe instance = new TicTacToe();
-//        instance.playGame();
-        
-//        assertEquals(gameBoard.currentState == 0);
-//    }
-    
-    /**
-     * Test of initializeGame method, of class TicTacToe.
-     */
-//    @Test
-//    public void testInitializeGame() {
-//        System.out.println("initializeGame");
-//        TicTacToe instance = new TicTacToe();
-//        instance.initializeGame();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
-    /**
-     * Test of playerMove method, of class TicTacToe.
-     Test for valid move:
-     Was playing entering in an empty cell?
-     Was the row number entered an integer?
-     Was the col number entered an integer?
-     Was the row number between 1 and 3?
-     Was the col number between 1 and 3?
-     */
-//    @Test
-//    public void testPlayerMove() {
-//        System.out.println("playerMove");
-//        TicTacToe instance = new TicTacToe();
-//        instance.playerMove();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
-    /**
-     * Test of computerMove method, of class TicTacToe.
-     Test for computer making a valid move
-     Test for computer making an invalid move
-     */
-//    @Test
-//    public void testComputerMove() {
-//        System.out.println("computerMove");
-//        TicTacToe instance = new TicTacToe();
-//        instance.computerMove();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
-    /**
-     * Test of checkGameState method, of class TicTacToe.
-     List out a game board that would result in a draw
-     List out a game board that would result in player winning
-     List out a game board that would result in computer winning
-     */
-    
-//    @Test
-//    public void testCheckGameState() {
-//        System.out.println("checkGameState");
-//        CellContent player = CellContent.EX;
-//        TicTacToe instance = new TicTacToe();
-//        instance.checkGameState(player);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }    
 }
