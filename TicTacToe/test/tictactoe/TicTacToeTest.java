@@ -158,15 +158,15 @@ public class TicTacToeTest {
         Board gameBoard = new Board(9);
         
         
-        gameBoard.cells[0][0].content = CellContent.EMPTY;
-        gameBoard.cells[0][1].content = CellContent.EMPTY;
-        gameBoard.cells[0][2].content = CellContent.EMPTY;
-        gameBoard.cells[1][0].content = CellContent.EMPTY;
-        gameBoard.cells[1][1].content = CellContent.EMPTY;
-        gameBoard.cells[1][2].content = CellContent.EMPTY;
-        gameBoard.cells[2][0].content = CellContent.EMPTY;
-        gameBoard.cells[2][1].content = CellContent.EMPTY;
-        gameBoard.cells[2][2].content = CellContent.EMPTY;
+        gameBoard.cells[0][0].content = CellContent.EX;
+        gameBoard.cells[0][1].content = CellContent.EX;
+        gameBoard.cells[0][2].content = CellContent.OH;
+        gameBoard.cells[1][0].content = CellContent.OH;
+        gameBoard.cells[1][1].content = CellContent.OH;
+        gameBoard.cells[1][2].content = CellContent.EX;
+        gameBoard.cells[2][0].content = CellContent.EX;
+        gameBoard.cells[2][1].content = CellContent.OH;
+        gameBoard.cells[2][2].content = CellContent.EX;
         
         assertEquals(gameBoard.isThereWinner(CellContent.EX), false);
         assertEquals(gameBoard.isThereWinner(CellContent.OH), false);
