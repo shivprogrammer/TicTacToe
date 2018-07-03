@@ -80,7 +80,8 @@ public class TicTacToe {
         if (currentState == GameState.PLAYING)
             computerMove();
     }
-        
+    
+    // TODO: MAKE RANDOM
     public void computerMove() {
         System.out.println("");
         System.out.print("Computer, please make your move: ");
@@ -90,9 +91,8 @@ public class TicTacToe {
         int compColChoice = consoleInput.nextInt() - 1;
         
         do {
-//            int compRowChoice = (int) Math.floor(Math.random() * 2);
-//            int compColChoice = (int) Math.floor(Math.random() * 2);
-            
+            // int compRowChoice = (int) Math.floor(Math.random() * 2);
+            // Int compColChoice = (int) Math.floor(Math.random() * 2);
             if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
                     System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
