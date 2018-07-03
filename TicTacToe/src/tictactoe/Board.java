@@ -34,7 +34,7 @@ public class Board {
         System.out.println("You can enter an integer combo choice based on the game board map below");
         printBoardMap();
         System.out.println("");
-        System.out.print("Ready to Go? Type any buttons to start ");
+        System.out.print("Ready to Go? Type any buttons to start: ");
     }
    
    public void printBoardMap() {
