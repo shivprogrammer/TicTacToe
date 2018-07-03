@@ -35,8 +35,7 @@ public class TicTacToe {
             playerMove();
     }
         
-// **TODO** There's an inputMismatchException to watch out for, maybe an add on would be:
-// -> if consoleInput is an instanceOf int, then move on to the code below
+// **TODO** There's an iIputMismatchException to watch out for, maybe an add on would be: if consoleInput is an instanceOf int, then move on to the code below, OR wrap the code in a try catch block
     public void playerMove() { 
         System.out.println("");
         
@@ -81,21 +80,23 @@ public class TicTacToe {
             computerMove();
     }
     
-    // TODO: MAKE RANDOM
     public void computerMove() {
-        // TODO: Make computer moves random
-        // int compRowChoice = (int) Math.floor(Math.random() * 2);
-        // Int compColChoice = (int) Math.floor(Math.random() * 2);
-            
-//        System.out.println("");
-//        System.out.print("Computer, please make your move: ");
-//        
-//        boolean validMove = false;
-//        int compRowChoice = consoleInput.nextInt() - 1;
-//        int compColChoice = consoleInput.nextInt() - 1;
+        // TODO: Make computer moves actually random
+         int tempRow = (int) Math.floor(Math.random() * 2);
+         int tempCol = (int) Math.floor(Math.random() * 2);
+         
+         while (gameBoard.cells[tempRow][tempCol].content != CellContent.EMPTY) {
+             tempRow = (int) Math.floor(Math.random() * 2);
+             tempCol = (int) Math.floor(Math.random() * 2);
+         }
+//             if (gameBoard.cells[tempRow][tempCol].content != CellContent.EMPTY)
+//         }
+//         
+         int compRowChoice = tempRow;
+         int compColChoice = tempRow;
         
-        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
-            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
+//        for (int compRowChoice = 0; compRowChoice < Board.TOTAL_ROWS; compRowChoice++) {
+//            for (int compColChoice = 0; compColChoice < Board.TOTAL_COLS; compColChoice++) {
                 if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
                     System.out.println("");
                     System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
@@ -109,30 +110,8 @@ public class TicTacToe {
                     if (currentState == GameState.PLAYING)
                         playerMove();
                 }
-            }
-        }
     }
-        
-//        do {
-
-//            if (gameBoard.cells[compRowChoice][compColChoice].content == CellContent.EMPTY) {
-//                    System.out.println("");
-//                    System.out.println("Computer has chosen row: " + (compRowChoice + 1) + ", and column: " + (compColChoice + 1));
-//                    gameBoard.cells[compRowChoice][compColChoice].content = CellContent.OH;
-//                    gameBoard.rowChoice = compRowChoice;
-//                    gameBoard.colChoice = compColChoice;
-//                    gameBoard.moveCount++;
-//                    gameBoard.printBoardInConsole();
-//                    validMove = true;
-//            }
             
-//            else
-//                System.out.print("Invalid, try again");
-            
-//        } while (!validMove);
-        
-//        checkGameState(CellContent.OH);
-    
     public void checkGameState(CellContent player) {
         if (gameBoard.isThereWinner(CellContent.EX)) {
             currentState = GameState.YOU_WON;
