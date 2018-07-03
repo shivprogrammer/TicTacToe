@@ -7,10 +7,6 @@ package tictactoe;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author zen
- */
 public class TicTacToeTest {
 //    public static final int YOU_LOST = -1;
 //    public static final int PLAYING = 0;
@@ -37,9 +33,21 @@ public class TicTacToeTest {
         assertEquals(gameBoard.cells[2][2].content, CellContent.EMPTY);
     }
     
+    public boolean isValidMove(int rowChoice, int colChoice) {
+        return (
+                (rowChoice < 3 && rowChoice >= 0)
+                && (colChoice < 3 && colChoice >= 0)
+                );
+    }
+    
     @Test
     public void validPlayerMove() {
-        
+        assertEquals(isValidMove(0, 2), true);
+    }
+    
+    @Test
+    public void invalidPlayerMove() {
+        assertEquals(isValidMove(1, 100), false);
     }
     
 //    @Test
