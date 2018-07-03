@@ -43,7 +43,7 @@ public class TicTacToe {
         System.out.println("");
         
         // Ensure that chosen row integer is within valid range
-        System.out.print("Please enter the row number of your move: ");
+        System.out.print("Human, please enter the row number of your move: ");
         int playerRowChoice = consoleInput.nextInt() - 1;
         while (playerRowChoice > Board.TOTAL_ROWS || playerRowChoice < 0) {
             System.out.print("Invalid row choice, please choose ONLY a valid row integer between 1 and 3: ");
@@ -51,7 +51,7 @@ public class TicTacToe {
         }
         
         // Ensure that chosen column integer is within valid range
-        System.out.print("Please enter the column number of your move: ");
+        System.out.print("Human, please enter the column number of your move: ");
         int playerColChoice = consoleInput.nextInt() - 1;        
         while (playerColChoice >Board.TOTAL_COLS || playerColChoice < 0) {
             System.out.print("Invalid column choice, please choose ONLY a valid column integer between 1 and 3: ");
