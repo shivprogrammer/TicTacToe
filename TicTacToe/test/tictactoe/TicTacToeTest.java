@@ -1,21 +1,9 @@
 package tictactoe;
 
-//import org.junit.After;
-//import org.junit.AfterClass;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TicTacToeTest {
-//    public static final int YOU_LOST = -1;
-//    public static final int PLAYING = 0;
-//    public static final int TIE_GAME = 1;
-//    public static final int YOU_WON = 3;
-        
-//    public Board tieGame;
-//    public Board playerWon;
-//    public Board computerWon;
     
     @Test
     public void isBoardEmptyAtBeginning() {        
@@ -33,28 +21,58 @@ public class TicTacToeTest {
         assertEquals(gameBoard.cells[2][2].content, CellContent.EMPTY);
     }
     
+    // This method is not used in game, but the logic is so it's added here for testing purposes
     public boolean isValidMove(int rowChoice, int colChoice) {
         return ((rowChoice < Board.TOTAL_ROWS && rowChoice >= 0) && (colChoice < Board.TOTAL_COLS && colChoice >= 0));
     }
     
+    // Player Input Tests
     @Test
     public void validPlayerMove() {
         assertEquals(isValidMove(0, 2), true);
     }
-    
     @Test
     public void invalidPlayerMove() {
         assertEquals(isValidMove(1, 100), false);
     }
     
-    
-    
+    // Player Has Won Tests
     @Test
-    public void playerWon() {
+    public void playerWonHorizontal() {
         Board gameBoard = new Board(0);
         gameBoard.createEmptyBoard();
         gameBoard.cells[0][0].content = CellContent.EX;
         gameBoard.cells[0][1].content = CellContent.EX;
+        gameBoard.cells[0][2].content = CellContent.EX;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+    }
+    @Test
+    public void playerWonVertical() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.EX;
+        gameBoard.cells[1][0].content = CellContent.EX;
+        gameBoard.cells[2][0].content = CellContent.EX;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+    }
+    @Test
+    public void playerWonDiagonal() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[0][0].content = CellContent.EX;
+        gameBoard.cells[1][1].content = CellContent.EX;
+        gameBoard.cells[2][2].content = CellContent.EX;
+        
+        assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
+    }
+    @Test
+    public void playerWonBackwardsDiagonal() {
+        Board gameBoard = new Board(0);
+        gameBoard.createEmptyBoard();
+        gameBoard.cells[2][0].content = CellContent.EX;
+        gameBoard.cells[1][1].content = CellContent.EX;
         gameBoard.cells[0][2].content = CellContent.EX;
         
         assertEquals(gameBoard.isThereWinner(CellContent.EX), true);
@@ -83,25 +101,6 @@ public class TicTacToeTest {
 //        assertEquals(gameBoard.currentState == 0);
 //    }
     
-//    public TicTacToeTest() {
-//    }
-    
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//    
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//    
-//    @Before
-//    public void setUp() {
-//    }
-//    
-//    @After
-//    public void tearDown() {
-//    }
-
     /**
      * Test of initializeGame method, of class TicTacToe.
      */
@@ -113,10 +112,6 @@ public class TicTacToeTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
-    /**
-     * Test of playGame method, of class TicTacToe.
-     */
 
     /**
      * Test of playerMove method, of class TicTacToe.
