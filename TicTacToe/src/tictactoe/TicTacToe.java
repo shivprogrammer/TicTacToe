@@ -75,10 +75,8 @@ public class TicTacToe {
         gameBoard.moveCount++;
         gameBoard.printBoardInConsole();
                 
-        // Has the GameState changed?
+        // What's next?
         checkGameState(CellContent.EX);
-        
-        // If not, it's the computer's turn
         if (currentState == GameState.PLAYING)
             computerMove();
     }
