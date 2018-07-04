@@ -31,11 +31,13 @@ public class TicTacToeTest {
     Was the col number between 1 and 3? [HANDLED IN METHOD ITSELF]
     */
     
+    // CHECKING PLAYER MOVE
+    
     // This method is not used in game, but the logic is so it's added here for testing purposes
     public boolean isValidMove(int rowChoice, int colChoice) {
         return ((rowChoice < Board.TOTAL_ROWS && rowChoice >= 0) && (colChoice < Board.TOTAL_COLS && colChoice >= 0));
     }
-    // Player Move Tests
+    
     @Test
     public void validPlayerMove() {
         assertEquals(isValidMove(0, 2), true);
@@ -133,9 +135,8 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.OH), true);
     }
     
-    /*
-    GAME IS ONGOING
-    */
+    
+    // GAME IS ONGOING
     @Test
     public void stillPlayingGame() {
         Board gameBoard = new Board(7);
@@ -144,13 +145,10 @@ public class TicTacToeTest {
         assertEquals(gameBoard.isThereWinner(CellContent.OH), false);
     }
     
-    /*
-    THERE WAS A TIE GAME
-    */
+    // THERE WAS A TIE GAME
     @Test
     public void gameResultedInDraw() {
         Board gameBoard = new Board(9);
-        
         
         gameBoard.cells[0][0].content = CellContent.EX;
         gameBoard.cells[0][1].content = CellContent.EX;
